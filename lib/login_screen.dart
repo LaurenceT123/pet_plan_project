@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
-class MyLoginScreen extends StatefulWidget {
+void main() {
+  runApp(
+    MaterialApp(
+      title: 'Named Routes Demo',
+      // Start the app with the "/" named route. In this case, the app starts
+      // on the FirstScreen widget.
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
+      },
+    ),
+  );
+}
+
+class MyLoginScreen extends StatefulWidget
+{
   const MyLoginScreen({super.key, required this.title});
   final String title;
 
@@ -15,6 +33,9 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
     setState(() {
       _counter++;
     });
+
+    Navigator.pushNamed(context, '/');
+
   }
 
   @override
@@ -33,20 +54,8 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
+
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
-void main() {
+void main()
+{
   runApp(const MyApp());
 }
 
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -32,8 +34,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyLoginScreen(title: 'Second Screen'),
+      home: const MyHomePage(title: 'Welcome to Plan Pet'),
+
+      //Define other routes
+      initialRoute: '/',
+      routes:
+      {
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/loginScreen': (context) => const MyLoginScreen(title: 'second page'),
+      },
     );
+
   }
 }
 
@@ -67,6 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
+    Navigator.pushNamed(context, '/loginScreen');
   }
 
   @override

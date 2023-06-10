@@ -27,15 +27,9 @@ class MyLoginScreen extends StatefulWidget
 }
 
 class _MyLoginScreenState extends State<MyLoginScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-
+  void _goTo()
+  {
     Navigator.pushNamed(context, '/');
-
   }
 
   @override
@@ -58,18 +52,11 @@ class _MyLoginScreenState extends State<MyLoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'THIS IS THE SECOND PAGE',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _goTo,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

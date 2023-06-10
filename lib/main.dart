@@ -95,14 +95,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
             //Create new Pet Profile Button
             Expanded(
-              flex:5,
-                child: SizedBox(
-                  width:250.0,
-                    child: OutlinedButton(
-                      onPressed: null, //toDo
-                      child: Text('Create Pet Profile'),
-                    ),
-                  ),
+              flex:10,
+                child:
+                Column(
+                  children: [
+                    SizedBox(
+                      width:250.0,
+                      child: OutlinedButton(
+                        onPressed: null, //toDo
+                        child: Text('Create Pet Profile'),
+                        ),
+                      ),
+                  Text('Note: Data will not be saved without logging in'),
+                  ]
+                ),
             ),
 
             //Space between buttons

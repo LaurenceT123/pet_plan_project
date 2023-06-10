@@ -38,12 +38,94 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
   {
     return Scaffold(
       appBar: AppBar(
-          title: Text("CREATE ACCOUNT"),
+
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
+            // 'Welcome to Plan Pet'
+            Expanded(
+              flex:10,
+              child: Text(
+                'Enter Information',
+                style: new TextStyle(
+                  fontSize: 35.0,
+                ),
+              ),
+            ),
+
+            Expanded(
+              flex:90,
+              child: Container(
+                width: 350.0,
+                child: Column(
+                    children:
+                    [
+                      Text('Login'),
+                      TextField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Name',
+                        ),
+                      ),
+
+                      SizedBox(height:20),
+
+                      TextField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Username',
+                        ),
+                      ),
+
+                      SizedBox(height:20),
+
+                      TextField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Email',
+                        ),
+                      ),
+
+                      SizedBox(height:20),
+                      TextField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Password',
+                        ),
+                      ),
+
+                      SizedBox(height:20),
+
+                      TextField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Re-type Password',
+                        ),
+                      ),
+
+                      SizedBox(height:20),
+
+                      Container(
+                        width:150.0,
+                        child: OutlinedButton(
+                          onPressed: null, //toDo
+                          child: Text('Submit'),
+                        ),
+
+                      ),
+                    ]
+                ),
+              ),
+            ),
+
 
           ],
         ),

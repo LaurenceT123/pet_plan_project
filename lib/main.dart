@@ -69,8 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
           (
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
+            //Logo
             Expanded(
-              flex:60,
+              flex:50,
               child: Container(
                 width:250,
                 height:250,
@@ -80,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
+            // 'Welcome to Plan Pet'
             Expanded(
               flex:10,
               child: Text(
@@ -90,6 +93,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
             ),
 
+            //Create new Pet Profile Button
+            Expanded(
+              flex:5,
+                child: SizedBox(
+                  width:250.0,
+                    child: OutlinedButton(
+                      onPressed: null, //toDo
+                      child: Text('Create Pet Profile'),
+                    ),
+                  ),
+            ),
+
+            //Space between buttons
+            SizedBox(height:40),
+
+            // Login and SignUp Button
             Expanded(
               flex:30,
               child: Container(
@@ -105,6 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text('Login'),
                     ),
                   ),
+
+                    //Space between buttons
+                    SizedBox(height:10),
+
                     SizedBox(
                       width: 250.0,
                       height: 40.0,

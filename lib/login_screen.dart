@@ -39,34 +39,39 @@ class _MyLoginScreenState extends State<MyLoginScreen>
       appBar: AppBar(
         title: Text('LOGIN'),
      ),
+
       body: Center(
         child: Column
         (
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-          Expanded(
-            flex:40,
-            child: Container(
-              width:250,
-              height:250,
-              child: Image( //toDo
-              image: NetworkImage('https://media.istockphoto.com/id/1132462309/vector/paw-logo-of-cat-or-dog-animal-pet-vector-paw-footprint-in-circle-icon.jpg?s=612x612&w=0&k=20&c=Yx76xI62IuvrMwuC048Dq1ZiJEUuMnTjI-I90hd2pbw=')
+
+            //Icon Image
+            Expanded(
+              flex:40,
+              child: Container(
+                width:250,
+                height:250,
+                child: Image( //toDo
+                image: NetworkImage('https://media.istockphoto.com/id/1132462309/vector/paw-logo-of-cat-or-dog-animal-pet-vector-paw-footprint-in-circle-icon.jpg?s=612x612&w=0&k=20&c=Yx76xI62IuvrMwuC048Dq1ZiJEUuMnTjI-I90hd2pbw=')
+                ),
               ),
             ),
-        ),
 
-          Expanded(
-            flex:20,
-            child:
-                Text('Welcome to Plan Pet',
-                style: new TextStyle(
-                    fontSize: 35.0,
-                  ),
-                ),
-            ),
-
+            //'Enter Login Info'
             Expanded(
-              flex:50,
+              flex:20,
+              child:
+                  Text('Enter Login Info',
+                  style: new TextStyle(
+                      fontSize: 35.0,
+                    ),
+                  ),
+              ),
+
+            //Login Info Buttons - Email, Password, Forgot Password, Submit
+            Expanded(
+              flex:40,
               child: Container(
                 width: 350.0,
                 child: Column(

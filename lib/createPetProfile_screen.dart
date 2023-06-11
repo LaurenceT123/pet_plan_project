@@ -1,23 +1,8 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
-import 'createPetProfile_screen2.dart';
+import 'createPet2_screen.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
-        '/secondPage' : (context) => const MyCreatePetProfileScreen2(title:'Create your pet profile!'),
-      },
-    ),
-  );
-}
+void main() => runApp(MyCreatePetProfileScreen(title: 'test'));
 
 class MyCreatePetProfileScreen extends StatefulWidget
 {
@@ -30,13 +15,23 @@ class MyCreatePetProfileScreen extends StatefulWidget
 
 class _MyCreatePetProfileScreenState extends State<MyCreatePetProfileScreen> {
 
-  void _goToSecondPage() {
-    Navigator.pushNamed(context, '/secondPage');
-  }
-
   @override
   Widget build(BuildContext context)
   {
+    MaterialApp(
+      title: 'Named Routes Demo',
+      // Start the app with the "/" named route. In this case, the app starts
+      // on the FirstScreen widget.
+      initialRoute: '/',
+      routes:
+      {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
+        '/second':(context) => const MyCreatePetProfile2(title:'Create your pet profile!'),
+      },
+    );
+
     return Scaffold(
         body: NestedScrollView(
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -121,11 +116,11 @@ class _MyCreatePetProfileScreenState extends State<MyCreatePetProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.all(50),
+                            padding: EdgeInsets.all(20),
                             child:SizedBox(
                               width:250.0,
                               child: OutlinedButton(
-                                onPressed: _goToSecondPage,
+                                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfile2(title: 'test')),);},
                                 child: Text('Other'),
                               ),
                             ),

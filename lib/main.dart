@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'signUp_screen.dart';
+import 'createPetProfile_screen.dart';
 
 void main()
 {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/loginScreen': (context) => const MyLoginScreen(title: 'login page'),
         '/signUpScreen': (context) => const MySignUpScreen(title: 'sign up page'),
+        '/createPetProfile': (context) => const MyCreatePetProfileScreen(title:'Create your new Pet Profile!'),
       },
     );
 
@@ -54,6 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void _goToSignUp()
   {
     Navigator.pushNamed(context, '/signUpScreen');
+  }
+  void _goToCreatePetProfile()
+  {
+    Navigator.pushNamed(context,'/createPetProfile');
   }
   @override
   Widget build(BuildContext context) {
@@ -102,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(
                       width:250.0,
                       child: OutlinedButton(
-                        onPressed: null, //toDo
+                        onPressed: _goToCreatePetProfile,
                         child: Text('Create Pet Profile'),
                         ),
                       ),

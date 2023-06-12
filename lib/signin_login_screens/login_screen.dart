@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import '../user_petProfiles_screens/petProfiles.dart';
+import '../main.dart';
 
 void main() {
   runApp(
@@ -17,73 +18,67 @@ void main() {
   );
 }
 
-class MySignUpScreen extends StatefulWidget
+class MyLoginScreen extends StatefulWidget
 {
-  const MySignUpScreen({super.key, required this.title});
+  const MyLoginScreen({super.key, required this.title});
   final String title;
 
   @override
-  State<MySignUpScreen> createState() => _MySignUpScreenState();
+  State<MyLoginScreen> createState() => _MyLoginScreenState();
 }
 
-class _MySignUpScreenState extends State<MySignUpScreen> {
-
-  void _goTo() {
+class _MyLoginScreenState extends State<MyLoginScreen>
+{
+  void _goTo()
+  {
     Navigator.pushNamed(context, '/');
-
   }
 
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('LOGIN'),
+     ),
 
-      ),
       body: Center(
-        child: Column(
+        child: Column
+        (
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
-            // 'Welcome to Plan Pet'
+            //Icon Image
             Expanded(
-              flex:10,
-              child: Text(
-                'Enter Information',
-                style: new TextStyle(
-                  fontSize: 35.0,
+              flex:40,
+              child: Container(
+                width:250,
+                height:250,
+                child: Image( //toDo
+                image: NetworkImage('https://media.istockphoto.com/id/1132462309/vector/paw-logo-of-cat-or-dog-animal-pet-vector-paw-footprint-in-circle-icon.jpg?s=612x612&w=0&k=20&c=Yx76xI62IuvrMwuC048Dq1ZiJEUuMnTjI-I90hd2pbw=')
                 ),
               ),
             ),
 
+            //'Enter Login Info'
             Expanded(
-              flex:90,
+              flex:20,
+              child:
+                  Text('Enter Login Info',
+                  style: new TextStyle(
+                      fontSize: 35.0,
+                    ),
+                  ),
+              ),
+
+            //Login Info Buttons - Email, Password, Forgot Password, Submit
+            Expanded(
+              flex:40,
               child: Container(
                 width: 350.0,
                 child: Column(
-                    children:
+                  children:
                     [
                       Text('Login'),
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Name',
-                        ),
-                      ),
-
-                      SizedBox(height:20),
-
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Username',
-                        ),
-                      ),
-
-                      SizedBox(height:20),
-
                       TextField(
                         obscureText: false,
                         decoration: InputDecoration(
@@ -92,7 +87,6 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                         ),
                       ),
 
-                      SizedBox(height:20),
                       TextField(
                         obscureText: false,
                         decoration: InputDecoration(
@@ -100,23 +94,15 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                           labelText: 'Password',
                         ),
                       ),
-
-                      SizedBox(height:20),
-
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Re-type Password',
-                        ),
+                      TextButton(
+                        onPressed: null, //toDo
+                        child: Text('Forgot Password?'),
                       ),
-
-                      SizedBox(height:20),
 
                       Container(
                         width:150.0,
-                        child: OutlinedButton(
-                          onPressed: null, //toDo
+                        child:OutlinedButton(
+                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPetProfiles_screen(title: 'test')),);},
                           child: Text('Submit'),
                         ),
 
@@ -125,11 +111,10 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),
+
     );
   }
 }

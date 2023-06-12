@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
-import 'signUp_screen.dart';
-import 'createPetProfile_screen.dart';
+import 'signin_login_screens/login_screen.dart';
+import 'signin_login_screens/signUp_screen.dart';
+import 'signin_login_screens/createPetProfile_screen.dart';
 
 void main()
 {

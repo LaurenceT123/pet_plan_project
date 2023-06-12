@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import '../main.dart';
 import 'other_screen.dart';
 
 void main() => runApp(MyCreatePetProfile2(title: 'test'));

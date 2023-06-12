@@ -46,7 +46,7 @@ class _MyCreatePetProfileScreenState extends State<MyCreatePetProfileScreen> {
                         StretchMode.fadeTitle,
                       ],
                       //centerTitle:true,
-                      background: Image.network('https://previews.123rf.com/images/zagory/zagory1703/zagory170300146/74495534-seamless-background-on-the-topic-of-pet-care-pet-shop-simple-contour-icons-on-a-blue-background.jpg', fit: BoxFit.cover),
+                      background: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGPBoEGpVK4HkV3wXaCeWpIfSkwNFRX43_3nAfhGpcSlo9dTQD1_ObEHTJycit7dTnbtpqnFSiA_g&usqp=CAU&ec=48665698', fit: BoxFit.cover),
                       title: Text('Create Your New Pet Profile!'),
                   ),
                 ),

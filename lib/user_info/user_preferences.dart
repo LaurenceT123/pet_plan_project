@@ -1,6 +1,5 @@
 import 'User.dart';
 
-
 class UserPreferences {
 
   static const myUser = User(

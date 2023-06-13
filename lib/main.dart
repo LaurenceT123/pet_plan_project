@@ -120,36 +120,48 @@ class _MyHomePageState extends State<MyHomePage> {
             //Space between buttons
             SizedBox(height:40),
 
-            // Login and SignUp Button
             Expanded(
               flex:30,
-              child: Container(
-                width: 500.0,
-                height: 50.0,
-                child: Column(
-                  children: [
-                  SizedBox(
-                    width: 250.0,
-                    height: 40.0,
-                    child: OutlinedButton(
-                      onPressed: _goToLogin,
+              child: Column(
+                children: [
+
+                  Container(
+                    width: 200,
+                    child: ElevatedButton(
                       child: Text('Login'),
+                      onPressed: _goToLogin,
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all(Colors.white), //font color
+                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: Colors.blue.shade100)
+                            )
+                        ),
+                      ),
                     ),
                   ),
 
-                    //Space between buttons
-                    SizedBox(height:10),
-
-                    SizedBox(
-                      width: 250.0,
-                      height: 40.0,
-                      child: OutlinedButton(
-                        onPressed: _goToSignUp,
-                        child: Text('Sign Up'),
+                  Container(
+                    width: 200,
+                    child: ElevatedButton(
+                      child: Text('Sign Up'),
+                      onPressed: _goToSignUp,
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all(Colors.white), //font color
+                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: Colors.blue.shade100)
+                            )
+                        ),
                       ),
                     ),
-                  ]
-                ),
+                  ),
+
+                ]
               ),
             ),
 

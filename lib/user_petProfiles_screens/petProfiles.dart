@@ -3,9 +3,14 @@ import '../user_info/user_preferences.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../main.dart';
 import 'EditProfilePage.dart';
+import '../dailySchedule_screens/dailySchedule.dart';
 
-void main() => runApp(MyPetProfiles_screen(title: 'test'));
+void main() {
 
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(MyPetProfiles_screen(title: 'test'));
+}
 class MyPetProfiles_screen extends StatefulWidget
 {
   const MyPetProfiles_screen({super.key, required this.title});
@@ -63,11 +68,33 @@ class _petProfileState extends State<MyPetProfiles_screen> {
 
             Expanded(
               flex: 10,
-              child: Text(
+              child: Container (
+                child:Text(
                 'PET PROFILES',
                 style: TextStyle(fontSize:20, color: Colors.grey),
+                ),
               ),
             ),
+
+            Container(
+              margin: EdgeInsets.only(top:30,bottom: 30),
+              width: 200,
+              child: ElevatedButton(
+                child: Text('Daily Schedule'),
+                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyDailySchedule_screen(title: 'test')),);},
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all(Colors.white), //font color
+                  backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.blue.shade100)
+                      )
+                  ),
+                ),
+              ),
+            ),
+
 
           ]
         ),

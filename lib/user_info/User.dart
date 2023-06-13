@@ -9,5 +9,4 @@ class User
     required this.name,
     required this.email
   });
-
 }

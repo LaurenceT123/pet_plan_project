@@ -36,7 +36,12 @@ class _DailyScheduleState extends State<MyDailySchedule_screen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('LOGIN'),
+        actions: <Widget> [
+          IconButton(
+            icon: const Icon(Icons.add_circle_outline, color: Colors.black),
+            onPressed: (){},
+          ),
+        ]
       ),
 
       body: Center(

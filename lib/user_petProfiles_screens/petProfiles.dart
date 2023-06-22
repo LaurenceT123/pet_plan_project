@@ -3,7 +3,8 @@ import '../user_info/user_preferences.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../main.dart';
 import 'EditProfilePage.dart';
-import '../dailySchedule_screens/dailySchedule.dart';
+import '../signin_login_screens/createPetProfile_screen.dart';
+import '../custom_made_widgets/petProfile_widget.dart';
 
 void main() {
 
@@ -41,8 +42,7 @@ class _petProfileState extends State<MyPetProfiles_screen> {
     );
 
     return Scaffold(
-        body: Center(
-        child:Column(
+        body: Column(
           children: [
 
             Expanded(
@@ -60,19 +60,42 @@ class _petProfileState extends State<MyPetProfiles_screen> {
 
                   Text(
                     'Welcome ' + user.name,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize:30),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize:35),
                   ),
                 ]
               ),
             ),
 
             Expanded(
-              flex: 10,
-              child: Container (
-                child:Text(
-                'PET PROFILES',
-                style: TextStyle(fontSize:20, color: Colors.grey),
-                ),
+              flex: 50,
+              child: Column(
+                children: [
+
+                  Text('PET PROFILES', style: TextStyle(fontSize:25, color: Colors.grey),),
+                  SizedBox(height: 40), //create space between title and widgets
+
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Wrap(
+                        alignment: WrapAlignment.spaceAround,
+                        direction: Axis.vertical,
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: [
+                            PetProfileWidget(
+                              imagePath: 'https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+                              onClicked:(){},
+                            ),
+
+                            //Add Pet Profile
+                            PetProfileWidget(
+                              imagePath: 'https://pixlok.com/wp-content/uploads/2021/12/Add-Icon-SVG-98ygj.png',
+                              onClicked:() {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfileScreen(title: 'test')),);},
+                            ),
+                        ]
+                    ),
+                  ),
+                ],
               ),
             ),
 
@@ -80,8 +103,8 @@ class _petProfileState extends State<MyPetProfiles_screen> {
               margin: EdgeInsets.only(top:30,bottom: 30),
               width: 200,
               child: ElevatedButton(
-                child: Text('Daily Schedule'),
-                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyDailySchedule_screen(title: 'test')),);},
+                child: Text('Logout'),
+                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'test')),);},
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all(Colors.white), //font color
                   backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
@@ -97,8 +120,6 @@ class _petProfileState extends State<MyPetProfiles_screen> {
 
 
           ]
-        ),
-
         ),
     );
   }

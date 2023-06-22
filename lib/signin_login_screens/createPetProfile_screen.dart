@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
 import 'createPet2_screen.dart';
+import 'createPet3_screen.dart';
 
 void main() => runApp(MyCreatePetProfileScreen(title: 'test'));
 
@@ -74,7 +75,7 @@ class _MyCreatePetProfileScreenState extends State<MyCreatePetProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           InkWell(
-                            onTap:(){}, //todo
+                            onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfile3(title: 'test')),);},
                             child: Ink.image(
                               image: NetworkImage('https://photosfine.files.wordpress.com/2012/04/green-bird-white-background.jpg'),
                               width: 200,
@@ -90,7 +91,7 @@ class _MyCreatePetProfileScreenState extends State<MyCreatePetProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           InkWell(
-                            onTap:(){}, //todo
+                            onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfile3(title: 'test')),);},
                             child: Ink.image(
                               image: NetworkImage('https://i.pinimg.com/originals/fc/a3/f2/fca3f23718eb4a50cbe140c3d02409f1.jpg'),
                               width: 200,
@@ -100,7 +101,7 @@ class _MyCreatePetProfileScreenState extends State<MyCreatePetProfileScreen> {
                           ),
 
                           InkWell(
-                            onTap:(){}, //todo
+                            onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfile3(title: 'test')),);},
                             child: Ink.image(
                               image: NetworkImage('https://i.pinimg.com/originals/7a/9d/0d/7a9d0d3e2678927b6d1994d9b078030b.png'),
                               width: 170,

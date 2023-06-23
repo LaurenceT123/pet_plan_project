@@ -32,8 +32,8 @@ class PetProfileWidget extends StatelessWidget {
         child:Ink.image(
           image: image,
           fit: BoxFit.cover,
-          width: 100,
-          height: 100,
+          width: 110,
+          height: 110,
           child: InkWell(onTap: onClicked),
         ),
       ),

@@ -68,7 +68,7 @@ class _EditProfileState extends State<MyEditProfile_screen> {
                         ),
                       ),
 
-                      SizedBox(height:20),
+                      SizedBox(height:10),
 
                       Text('Email:'),
                       TextField(
@@ -78,14 +78,33 @@ class _EditProfileState extends State<MyEditProfile_screen> {
                           labelText: user.email,
                         ),
                       ),
-                      SizedBox(height:20),
+                      SizedBox(height:5),
 
                       Container(
-                        width:150.0,
-                        child:OutlinedButton(
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPetProfiles_screen(title: 'test')),);},
-                          child: Text('Change'),
+                        margin: EdgeInsets.only(top:30,bottom: 10),
+                        width: 200,
+                        child: ElevatedButton(
+                          child: Text('Change Password'),
+                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'test')),);},
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all(Colors.white), //font color
+                            backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.blue.shade100)
+                                )
+                            ),
+                          ),
                         ),
+                      ),
+
+                          Container(
+                            width:150.0,
+                            child:OutlinedButton(
+                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPetProfiles_screen(title: 'test')),);},
+                              child: Text('Save Changes'),
+                            ),
 
 
                       ),

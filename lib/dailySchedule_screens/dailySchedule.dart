@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'add_task_bar.dart';
 
 void main() {
 
@@ -18,6 +22,7 @@ class MyDailySchedule_screen extends StatefulWidget
 
 class _DailyScheduleState extends State<MyDailySchedule_screen> {
 
+  DateTime _selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context)
   {
@@ -36,23 +41,78 @@ class _DailyScheduleState extends State<MyDailySchedule_screen> {
 
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget> [
-          IconButton(
-            icon: const Icon(Icons.add_circle_outline, color: Colors.black),
-            onPressed: (){},
-          ),
-        ]
       ),
 
       body: Center(
         child:Column(
             children: [
-
+              _addTaskBar(),
+              _addDateBar(),
 
             ]
+
         ),
 
       ),
     );
   }
+
+  _addDateBar()
+  {
+    return Container(
+      margin: const EdgeInsets.only(top:20, left:20),
+      child: DatePicker(
+          DateTime.now(),
+          height: 100,
+          width: 80,
+          initialSelectedDate: DateTime.now(),
+          selectionColor: Colors.blue.shade400,
+          selectedTextColor: Colors.white,
+          dateTextStyle: TextStyle(
+            fontSize: 15,
+            color:Colors.grey,
+          ),
+          onDateChange:(date){
+            _selectedDate = date;
+          }
+
+      ),
+    );
+  }
+  _addTaskBar()
+  {
+    return Container(
+      margin: const EdgeInsets.only(left:20, right:20, top:10),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(DateFormat.yMMMMd().format(DateTime.now()), style: GoogleFonts.lato (textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize:25))),
+                    Text("Today", style: GoogleFonts.lato (textStyle: TextStyle(fontSize:20))),
+                  ]
+              ),
+            ),
+
+            GestureDetector(
+              child: Container(
+                width: 150,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue.shade400,
+                ),
+                child: Center(child: TextButton(
+                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const AddTaskPage_screen(title: 'test')),);},
+                    child:Text("+ Add Task", style: TextStyle(color:Colors.white)))),
+              ),
+            ),
+          ]
+
+      ),
+    );
+  }
+
 }

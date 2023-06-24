@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
-import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import '../main.dart';
 import 'add_task_bar.dart';
+import '../db/db_helper.dart';
 
-void main() {
+void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-
+  await DBHelper.initDb();
   runApp(MyDailySchedule_screen(title: 'test'));
 }
 class MyDailySchedule_screen extends StatefulWidget

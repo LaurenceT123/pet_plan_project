@@ -1,4 +1,4 @@
-
+import 'package:flutter/material.dart';
 
 class Task
 {
@@ -26,7 +26,7 @@ class Task
         this.remind,
         this.repeat,
       }
-  );
+      );
 
   Task.fromJson(Map<String, dynamic> json) //retrieve data
   {

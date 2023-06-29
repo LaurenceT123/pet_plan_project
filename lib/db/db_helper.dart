@@ -9,28 +9,28 @@ class DBHelper
 
   static Future<void> initDb() async{
     if(_db != null)
-      {
-        return;
-      }
+    {
+      return;
+    }
     try {
-          String _path = await getDatabasesPath() + 'tasks.db';
-          _db = await openDatabase(
-            _path,
-          version: _version,
-          onCreate: (db,version) {
-              print("creating a new one");
-              return db.execute(
-                "CREATE TABLE $_tableName("
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    "title STRING, note TEXT, data STRING, "
-                    "startTime STRING, endTime String, "
-                    "remind INTEGER, repeat STRING, "
-                    "color INTEGER, "
-                    "isCompleted INTEGER)",
-              );
-          },
+      String _path = await getDatabasesPath() + 'tasks.db';
+      _db = await openDatabase(
+        _path,
+        version: _version,
+        onCreate: (db,version) {
+          print("creating a new one");
+          return db.execute(
+            "CREATE TABLE $_tableName("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "title STRING, note TEXT, data STRING, "
+                "startTime STRING, endTime String, "
+                "remind INTEGER, repeat STRING, "
+                "color INTEGER, "
+                "isCompleted INTEGER)",
           );
-        } catch(e) {
+        },
+      );
+    } catch(e) {
       print(e);
     }
   }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'signin_login_screens/login_screen.dart';
 import 'signin_login_screens/signUp_screen.dart';
 import 'signin_login_screens/createPetProfile_screen.dart';
+import 'package:provider/provider.dart';
+import '../db/event_provider.dart';
 
 void main()
 {
@@ -12,10 +14,16 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
+  /*Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => EventProvider(),
+    child: MaterialApp(
+    ),
+  * */
   @override
-  Widget build(BuildContext context)
-  {
-    return MaterialApp(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => EventProvider(),
+    child:MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -32,9 +40,8 @@ class MyApp extends StatelessWidget {
         '/signUpScreen': (context) => const MySignUpScreen(title: 'sign up page'),
         '/createPetProfile': (context) => const MyCreatePetProfileScreen(title:'Create your new Pet Profile!'),
       },
-    );
-
-  }
+    ),
+  );
 }
 
 

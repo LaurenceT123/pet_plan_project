@@ -4,6 +4,12 @@ import 'EditProfilePage.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import '../pet_profiles_info/pet_preferences.dart';
 import '../dailySchedule_screens/dailySchedule.dart';
+import '../db/event_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
+import '../db/event_provider.dart';
+import '../dailySchedule_screens/event_data_source.dart';
+
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +27,12 @@ class MyPetProfiles2_screen extends StatefulWidget
 
 class _petProfile2State extends State<MyPetProfiles2_screen> {
 
+
   @override
   Widget build(BuildContext context)
   {
+
+    final events = Provider.of<EventProvider>(context).events;
 
     final user = PetPreferences.myUser;
 
@@ -65,9 +74,34 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
             ),
 
             Expanded(
-              flex:40,
+              flex:50,
               child: Column(
                   children: [
+                    Container(
+                      height:300,
+                      child: SfCalendar(
+                        view: CalendarView.schedule,
+                        dataSource: EventDataSource(events),
+                        initialSelectedDate: DateTime.now(),
+                        scheduleViewSettings: ScheduleViewSettings(
+                          hideEmptyScheduleWeek: true,
+                          monthHeaderSettings: MonthHeaderSettings(
+                            height: 20,
+                            textAlign: TextAlign.left,
+                            backgroundColor: Colors.white,
+                          ),
+                          weekHeaderSettings: WeekHeaderSettings(
+                            height:20,
+                            textAlign: TextAlign.center,
+                            backgroundColor: Colors.blue.shade300,
+                            weekTextStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                          )
+                        ),
+                      ),
+                    )
 
 
                   ]
@@ -80,14 +114,13 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
                 children: [
 
                   Container(
-                    margin: EdgeInsets.only(top:2,bottom: 2),
                     width: 300,
                     child: ElevatedButton(
-                      child: Text('Daily Schedule'),
+                      child: Text('Add/Edit Events'),
                       onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyDailySchedule_screen(title: 'test')),);},
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
@@ -99,14 +132,13 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
                   ),
 
                   Container(
-                    margin: EdgeInsets.only(top:2,bottom: 2),
                     width: 300,
                     child: ElevatedButton(
-                      child: Text('Vet Appointment'),
+                      child: Text('Vet Information'),
                       onPressed: () {},
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
@@ -118,14 +150,13 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
                   ),
 
                   Container(
-                    margin: EdgeInsets.only(top:2,bottom: 2),
                     width: 300,
                     child: ElevatedButton(
                       child: Text('Share Pet Profile'),
                       onPressed: () {},
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),

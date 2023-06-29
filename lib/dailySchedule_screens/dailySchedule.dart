@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,11 @@ import 'package:intl/intl.dart';
 import '../main.dart';
 import 'add_task_bar.dart';
 import '../db/db_helper.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
+import '../db/event_provider.dart';
+import '../dailySchedule_screens/event_data_source.dart';
+import '../custom_made_widgets/tasks_widget.dart';
+import '../dailySchedule_screens/event_viewing_screen.dart';
 
 void main() async {
 
@@ -17,7 +23,6 @@ class MyDailySchedule_screen extends StatefulWidget
 {
   const MyDailySchedule_screen({super.key, required this.title});
   final String title;
-
   @override
   State<MyDailySchedule_screen> createState() => _DailyScheduleState();
 }
@@ -25,9 +30,13 @@ class MyDailySchedule_screen extends StatefulWidget
 class _DailyScheduleState extends State<MyDailySchedule_screen> {
 
   DateTime _selectedDate = DateTime.now();
+
   @override
   Widget build(BuildContext context)
   {
+
+
+    final events = Provider.of<EventProvider>(context).events;
 
     MaterialApp(
       title: 'Named Routes Demo',
@@ -49,7 +58,42 @@ class _DailyScheduleState extends State<MyDailySchedule_screen> {
         child:Column(
             children: [
               _addTaskBar(),
-              _addDateBar(),
+              //_addDateBar(),
+
+              SizedBox(height: 30),
+
+              Container(
+                height:560,
+                child: SfCalendar(
+                  view: CalendarView.day,
+                  dataSource: EventDataSource(events),
+                  initialSelectedDate: DateTime.now(),
+                  scheduleViewSettings: ScheduleViewSettings(
+                    hideEmptyScheduleWeek: true,
+                    monthHeaderSettings: MonthHeaderSettings(
+                      monthFormat: 'MMMM, yyyy',
+                      height: 100,
+                      textAlign: TextAlign.left,
+                      backgroundColor: Colors.blue.shade400,
+                    ),
+                  ),
+                  onLongPress: (details) {
+                    final provider = Provider.of<EventProvider>(context, listen: false);
+                    provider.setDate(details.date!);
+
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => TasksWidget(),
+                    );
+                  },
+                  onTap: (details) {
+                    if(details.appointments == null) return;
+                    final event = details.appointments!.first;
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => EventViewingPage(event:event)));
+
+                    },
+                ),
+              )
 
             ]
 
@@ -65,7 +109,7 @@ class _DailyScheduleState extends State<MyDailySchedule_screen> {
       margin: const EdgeInsets.only(top:20, left:20),
       child: DatePicker(
           DateTime.now(),
-          height: 100,
+          height: 200,
           width: 80,
           initialSelectedDate: DateTime.now(),
           selectionColor: Colors.blue.shade400,
@@ -107,12 +151,11 @@ class _DailyScheduleState extends State<MyDailySchedule_screen> {
                   color: Colors.blue.shade400,
                 ),
                 child: Center(child: TextButton(
-                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const AddTaskPage_screen(title: 'test')),);},
+                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const AddTaskPage_screen(),),);},
                     child:Text("+ Add Task", style: TextStyle(color:Colors.white)))),
               ),
             ),
           ]
-
       ),
     );
   }

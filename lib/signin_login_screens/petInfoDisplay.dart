@@ -6,6 +6,7 @@ import '../signin_login_screens/createPet4_screen.dart';
 
 import '../models/Pet.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 
 import '../custom_made_widgets/input_field.dart';
 
@@ -13,8 +14,9 @@ class PetInfoDisplay extends StatelessWidget
 {
   final User user;
   final Pet pet;
+  final VetInfo vet;
 
-  PetInfoDisplay({super.key, required this.user, required this.pet});
+  PetInfoDisplay({super.key, required this.user, required this.pet, required this.vet});
 
 
   @override
@@ -65,7 +67,7 @@ class PetInfoDisplay extends StatelessWidget
 
                       Navigator.push(context, MaterialPageRoute(
                           builder: (context) =>
-                              MyPetProfiles_screen(user: user)),);
+                              MyPetProfiles_screen(user: user, vet:vet)),);
                     },
                     child: Text('Finish', style: TextStyle(fontSize: 20)),
                   ),

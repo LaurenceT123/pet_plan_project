@@ -3,14 +3,16 @@ import '../main.dart';
 import 'other_screen.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 import '../signin_login_screens/createPet3_screen.dart';
 
 class MyCreatePetProfile2 extends StatelessWidget
 {
   final User user;
   final Pet pet;
+  final VetInfo vet;
 
-  const MyCreatePetProfile2({super.key, required this.user, required this.pet});
+  const MyCreatePetProfile2({super.key, required this.user, required this.pet, required this.vet});
 
   @override
   Widget build(BuildContext context)
@@ -62,7 +64,7 @@ class MyCreatePetProfile2 extends StatelessWidget
 
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) =>
-                                  MyCreatePetProfile3(user: user, pet: pet)),);
+                                  MyCreatePetProfile3(user: user, pet: pet, vet:vet)),);
                         },
                         child: Ink.image(
                           image: NetworkImage('https://media.istockphoto.com/id/1038723210/photo/turtle-isolated-on-white-background-reptile-species-or-tortoise.jpg?s=170667a&w=0&k=20&c=-e6QKQfzXPON9i2InHjCJD4m0S06ATsT61gcFomeT-E='),
@@ -83,7 +85,7 @@ class MyCreatePetProfile2 extends StatelessWidget
 
                       Navigator.push(context, MaterialPageRoute(
                           builder: (context) =>
-                              MyCreatePetProfile3(user: user, pet: pet)),);
+                              MyCreatePetProfile3(user: user, pet: pet, vet:vet)),);
                     }, //todo
                     child: Ink.image(
                       image: NetworkImage('https://previews.123rf.com/images/mirekkijewski/mirekkijewski1406/mirekkijewski140600157/29583600-goldfish-group-of-fish-on-a-white-background.jpg'),
@@ -102,7 +104,7 @@ class MyCreatePetProfile2 extends StatelessWidget
 
                         Navigator.push(context, MaterialPageRoute(
                             builder: (context) =>
-                                MyCreatePetProfile3(user: user, pet: pet)),);
+                                MyCreatePetProfile3(user: user, pet: pet,vet:vet)),);
 
                       }, //todo
                       child: Ink.image(

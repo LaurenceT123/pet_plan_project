@@ -3,13 +3,11 @@ class VetInfo
   String doctorName;
   String location;
   String phoneNumber;
-  String petAllergies;
 
   VetInfo({
-    this.doctorName = '',
-    this.location = '',
-    this.phoneNumber = '',
-    this.petAllergies = '',
+    this.doctorName = 'Empty',
+    this.location = 'Empty',
+    this.phoneNumber = 'No Number',
   });
 
   void setDoctorName(String newName)
@@ -28,6 +26,16 @@ class VetInfo
   String getLocation()
   {
     return location;
+  }
+
+  String getPhoneNumber()
+  {
+    return phoneNumber;
+  }
+
+  void setPhoneNumber(String newPhoneNumber)
+  {
+    phoneNumber = newPhoneNumber;
   }
 
 }

@@ -3,14 +3,16 @@ import '../custom_made_widgets/profile_widget.dart';
 import '../main.dart';
 import 'petProfiles.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 
 class MyEditProfile_screen extends StatelessWidget {
 
   final User user;
+  final VetInfo vet;
   final nameController = TextEditingController();
   final emailController = TextEditingController();
 
-  MyEditProfile_screen({super.key, required this.user});
+  MyEditProfile_screen({super.key, required this.user, required this.vet});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class MyEditProfile_screen extends StatelessWidget {
                         obscureText: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'test',
+                          labelText: 'Change name',
                         ),
                         controller: nameController,
                       ),
@@ -56,7 +58,7 @@ class MyEditProfile_screen extends StatelessWidget {
                         obscureText: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'email',
+                          labelText: 'Change email',
                         ),
                         controller: emailController,
                       ),
@@ -68,8 +70,8 @@ class MyEditProfile_screen extends StatelessWidget {
                         child: ElevatedButton(
                           child: Text('Change Phone Number'),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (
-                                context) => const MyHomePage(title: 'test')),);
+                            /*Navigator.push(context, MaterialPageRoute(builder: (
+                                context) => const MyHomePage(title: 'test')),);*/
                           },
                           style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all(
@@ -100,7 +102,7 @@ class MyEditProfile_screen extends StatelessWidget {
                               user.setEmail(emailController.text);
                             }
 
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => MyPetProfiles_screen(user: user)),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MyPetProfiles_screen(user: user, vet:vet)),);
                           },
                           child: Text('Save Changes'),
                         ),

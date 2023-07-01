@@ -1,47 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
 import '../main.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../signin_login_screens/getVetInfo.dart';
 
-class MySignUpScreen extends StatefulWidget
+class GetVetInfo extends StatelessWidget
 {
-  const MySignUpScreen({super.key, required this.title});
-  final String title;
+  User user;
+  VetInfo vet = new VetInfo();
 
-  @override
-  State<MySignUpScreen> createState() => _MySignUpScreenState();
-}
-
-class _MySignUpScreenState extends State<MySignUpScreen> {
+  GetVetInfo({super.key, required this.user});
 
   final nameController = TextEditingController();
-  final emailController = TextEditingController();
+  final locationController = TextEditingController();
   final phoneController = TextEditingController();
-  User user = new User (imagePath: ' ', name: ' ', email: ' ');
 
   @override
   Widget build(BuildContext context)
   {
 
-
     goTo() {
 
-      if(!nameController.text.isEmpty && !emailController.text.isEmpty && !phoneController.text.isEmpty) {
+      if(!nameController.text.isEmpty && !locationController.text.isEmpty && !phoneController.text.isEmpty) {
 
-        user.setImagePath('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
-        user.setName(nameController.text);
-        user.setEmail(emailController.text);
-        user.setNumber(phoneController.text);
+        vet.setDoctorName(nameController.text);
+        vet.setLocation(locationController.text);
+        vet.setPhoneNumber(phoneController.text);
+
 
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => GetVetInfo(user: user),));
+            builder: (context) => MyPetProfiles_screen(user: user, vet: vet)),);
       }
       else
-        {
-          print("Try again, input email and name are required!");
-        }
+      {
+        print("Try again, all fields are required!");
+      }
 
     }
 
@@ -54,7 +49,6 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
-            // 'Welcome to Plan Pet'
             Expanded(
               flex:10,
               child: Text(
@@ -78,7 +72,7 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                           obscureText: false,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Name',
+                            labelText: 'Doctor Name',
                           ),
                           controller:nameController,
                         ),
@@ -86,16 +80,31 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
 
                       SizedBox(height:20),
 
-                      Container(
-                        width: 380,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Email',
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Address', style: GoogleFonts.lato (textStyle: TextStyle(fontSize:15))),
+
+                          Container(
+                            height: 100,
+                            margin: EdgeInsets.only(top:5.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.grey.shade700,
+                                width:1.0,
+                              ),
+                            ),
+                            child: TextField(
+                              maxLines:null,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Address',
+                              ),
+                              controller: locationController,
+                            ),
                           ),
-                          controller: emailController,
-                        ),
+                        ],
                       ),
 
 
@@ -125,7 +134,7 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                         width:150.0,
                         child: OutlinedButton(
                           onPressed: goTo, //toDo
-                          child: Text('Next'),
+                          child: Text('Submit'),
                         ),
 
                       ),

@@ -6,15 +6,18 @@ import '../signin_login_screens/createPet4_screen.dart';
 
 import '../models/Pet.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 
 import '../custom_made_widgets/input_field.dart';
+import '../signin_login_screens/getVetInfo.dart';
 
 class MyCreatePetProfile3 extends StatelessWidget
 {
   final User user;
   final Pet pet;
+  final VetInfo vet;
 
-  MyCreatePetProfile3({super.key, required this.user, required this.pet});
+  MyCreatePetProfile3({super.key, required this.user, required this.pet, required this.vet});
 
 
   final nameController = TextEditingController();
@@ -83,7 +86,7 @@ class MyCreatePetProfile3 extends StatelessWidget
 
                       Navigator.push(context, MaterialPageRoute(
                           builder: (context) => MyCreatePetProfile4(
-                              user: user, pet: pet)),);
+                              user: user, pet: pet, vet: vet)),);
                      }
 
 

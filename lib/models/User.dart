@@ -5,11 +5,13 @@ class User
   String imagePath;
   String name;
   String email;
+  String number;
 
   User({
     this.imagePath = "",
     this.name = "",
     this.email = "",
+    this.number = "",
   });
 
   void setImagePath(String newImage)
@@ -36,6 +38,14 @@ class User
   String getEmail()
   {
     return email;
+  }
+  void setNumber(String num)
+  {
+    number = num;
+  }
+  String getNumber()
+  {
+    return number;
   }
 
 

@@ -6,7 +6,9 @@ import '../signin_login_screens/createPetProfile_screen.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import 'petProfiles2.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 import '../user_petProfiles_screens/choosePetProfile.dart';
+import '../signin_login_screens/showVetInfo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,8 +18,9 @@ class MyPetProfiles_screen extends StatelessWidget
 {
 
   final User user;
+  final VetInfo vet;
 
-  MyPetProfiles_screen({super.key, required this.user});
+  MyPetProfiles_screen({super.key, required this.user, required this.vet});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class MyPetProfiles_screen extends StatelessWidget
                       onClicked: () {
                         Navigator.push(context, MaterialPageRoute(
                             builder: (context) => MyEditProfile_screen(
-                                user: user)),);
+                                user: user, vet:vet)),);
                       },
                     ),
 
@@ -74,7 +77,7 @@ class MyPetProfiles_screen extends StatelessWidget
                           child: Text('Add New Pet Profile', style: TextStyle(fontSize: 20, color: Colors.white),),
                           onPressed: () {
                             Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => MyCreatePetProfileScreen(user: user)),);
+                                builder: (context) => MyCreatePetProfileScreen(user: user, vet: vet)),);
                           },
                           style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all(Colors.white),
@@ -171,10 +174,11 @@ class MyPetProfiles_screen extends StatelessWidget
                         ),
                       ),
 
+
                       Expanded(
                         flex: 60,
                         child: Padding(
-                          padding: const EdgeInsets.only(top:10,right: 8),
+                          padding: const EdgeInsets.only(top:5.0, right: 8),
                           child: SizedBox(
                             width: 250,
                             height: 40,
@@ -182,7 +186,7 @@ class MyPetProfiles_screen extends StatelessWidget
                               child: Text('Vet Info', style: TextStyle(fontSize: 20, color: Colors.white),),
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => MyChoosePetProfile(user: user)),);
+                                    builder: (context) => ShowVetInfo(user: user, vet:vet)),);
                               },
                               style: ButtonStyle(
                                 foregroundColor: MaterialStateProperty.all(Colors.white),

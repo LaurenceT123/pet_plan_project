@@ -4,12 +4,14 @@ import 'createPet2_screen.dart';
 import 'createPet3_screen.dart';
 import '../models/User.dart';
 import '../models/Pet.dart';
+import '../models/VetInfo.dart';
 
 class MyCreatePetProfileScreen extends StatelessWidget{
 
   final User user;
+  final VetInfo vet;
 
-  MyCreatePetProfileScreen({super.key, required this.user});
+  MyCreatePetProfileScreen({super.key, required this.user, required this.vet});
 
   Pet newPet = new Pet();
 
@@ -65,7 +67,7 @@ class MyCreatePetProfileScreen extends StatelessWidget{
 
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) =>
-                              MyCreatePetProfile3(user: user, pet: newPet)),);
+                              MyCreatePetProfile3(user: user, pet: newPet, vet: vet)),);
                         },
                         child: Ink.image(
                           image: NetworkImage(
@@ -89,7 +91,7 @@ class MyCreatePetProfileScreen extends StatelessWidget{
 
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) =>
-                                  MyCreatePetProfile3(user: user, pet: newPet)),);
+                                  MyCreatePetProfile3(user: user, pet: newPet, vet: vet)),);
                         },
                         child: Ink.image(
                           image: NetworkImage(
@@ -107,7 +109,7 @@ class MyCreatePetProfileScreen extends StatelessWidget{
 
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) =>
-                              MyCreatePetProfile3(user: user, pet: newPet)),);
+                              MyCreatePetProfile3(user: user, pet: newPet, vet: vet)),);
                         },
                         child: Ink.image(
                           image: NetworkImage(
@@ -132,7 +134,7 @@ class MyCreatePetProfileScreen extends StatelessWidget{
                             onPressed: () {
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) =>
-                                  MyCreatePetProfile2(user: user, pet : newPet)),);
+                                  MyCreatePetProfile2(user: user, vet: vet, pet : newPet)),);
                             },
                             child: Text('Other'),
                           ),

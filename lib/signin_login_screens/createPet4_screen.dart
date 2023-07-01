@@ -4,6 +4,7 @@ import '../user_petProfiles_screens/petProfiles.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../signin_login_screens/petInfoDisplay.dart';
 
@@ -11,8 +12,9 @@ class MyCreatePetProfile4 extends StatelessWidget
 {
   final User user;
   final Pet pet;
+  final VetInfo vet;
 
-  const MyCreatePetProfile4({super.key, required this.user, required this.pet});
+  const MyCreatePetProfile4({super.key, required this.user, required this.pet, required this.vet});
 
 
 
@@ -59,7 +61,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                                 pet.setImagePath('https://media.cnn.com/api/v1/images/stellar/prod/220818142713-dogs-tears-emotions-wellness-stock.jpg?c=16x9');
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => PetInfoDisplay(
-                                        user: user, pet: pet)),);
+                                        user: user, pet: pet, vet:vet)),);
                               },
                             ),
                           ),
@@ -73,7 +75,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                                 pet.setImagePath('https://people.com/thmb/SL7_3mF5irtEm4Kz8f63FWDrmPA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/dog-dating-1-a1a34ab3445740fcadf8699850c8333b.jpg');
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => PetInfoDisplay(
-                                        user: user, pet: pet)),);
+                                        user: user, pet: pet, vet:vet)),);
                               },
                             ),
                           ),
@@ -85,7 +87,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                               pet.setImagePath('https://media.istockphoto.com/id/149425119/photo/german-shepherd-isolated-on-white.jpg?s=612x612&w=0&k=20&c=gvtU0eFUSEFh7BP6MUThYD754CTwiLkTz4ICQhWGgHU=');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
-                                      user: user, pet: pet)),);
+                                      user: user, pet: pet,vet: vet)),);
                             },
                           ),
 
@@ -103,7 +105,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                               pet.setImagePath('https://previews.123rf.com/images/kirsanovv/kirsanovv0810/kirsanovv081000038/3693796-a-portrait-of-the-very-shaggy-small-dog-with-intent-look-profile.jpg');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
-                                      user: user, pet: pet)),);
+                                      user: user, pet: pet, vet:vet)),);
                             },
                           ),
 
@@ -114,7 +116,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                               pet.setImagePath('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2BZZCOMpTJKljCt84bVU0ejbjG_NTDwYvY40i5HHaAbOOgZUHzryniPpwDHQJ8sftNIqpacetjRA&usqp=CAU&ec=48665698');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
-                                      user: user, pet: pet)),);
+                                      user: user, pet: pet,vet:vet)),);
                             },
                           ),
 
@@ -125,7 +127,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                               pet.setImagePath('https://people.com/thmb/WxJfkZ3MCkXFhY1GgWzuJLqDgDc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1019x626:1021x628)/dog-dating-2522ccf2b0e04f94a29f25fdb81d79af.jpg');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
-                                      user: user, pet: pet)),);
+                                      user: user, pet: pet, vet:vet)),);
                             },
                           ),
                         ]

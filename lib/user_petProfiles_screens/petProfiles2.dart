@@ -8,43 +8,25 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../db/event_provider.dart';
 import '../dailySchedule_screens/event_data_source.dart';
+import '../models/User.dart';
+import '../models/Pet.dart';
 
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(MyPetProfiles2_screen(title: 'test'));
 }
-class MyPetProfiles2_screen extends StatefulWidget
+class MyPetProfiles2_screen extends StatelessWidget
 {
-  const MyPetProfiles2_screen({super.key, required this.title});
-  final String title;
+  final User user;
+  final Pet pet;
 
-  @override
-  State<MyPetProfiles2_screen> createState() => _petProfile2State();
-}
-
-class _petProfile2State extends State<MyPetProfiles2_screen> {
-
+  const MyPetProfiles2_screen({super.key, required this.user, required this.pet});
 
   @override
   Widget build(BuildContext context)
   {
 
     final events = Provider.of<EventProvider>(context).events;
-
-
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
-      },
-    );
 
     return Scaffold(
       appBar: AppBar(
@@ -60,12 +42,12 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: PetProfileWidget(
-                        imagePath: 'https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+                        imagePath: pet.getImagePath(),
                         onClicked:(){},
                       ),
                     ),
 
-                    Text('Biscuit'),
+                    Text(pet.getName()),
                   ]
               ),
             ),

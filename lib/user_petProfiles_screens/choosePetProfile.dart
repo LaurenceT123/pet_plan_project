@@ -21,18 +21,6 @@ class MyChoosePetProfile extends StatelessWidget
   @override
   Widget build(BuildContext context) {
 
-    final List<Widget> _listOfProfiles = List.generate(
-      user.getNumberOfPets(),
-        (index) => PetProfileWidget(
-          imagePath: user.getPet()[index].getImagePath(),//'https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
-          onClicked: () {
-
-          },
-        ),
-
-    );
-
-
     return Scaffold(
 
       appBar: AppBar(
@@ -58,7 +46,12 @@ class MyChoosePetProfile extends StatelessWidget
                         children: [
                           PetProfileWidget(
                             imagePath: user.getPet()[index].getImagePath(),//'https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
-                            onClicked: () {},
+                            onClicked: () {
+                              print('Clicked!');
+
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) =>new MyPetProfiles2_screen(user:user,pet:user.getPet()[index])),);
+                            },
                           ),
 
                           Text(user.getPet()[index].getName(),

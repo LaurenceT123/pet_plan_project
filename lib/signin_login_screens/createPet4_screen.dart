@@ -55,6 +55,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                             child: PetProfileWidget(
                               imagePath: 'https://media.cnn.com/api/v1/images/stellar/prod/220818142713-dogs-tears-emotions-wellness-stock.jpg?c=16x9',
                               onClicked: () {
+                                pet.setIndex(user.getNumberOfPets());
                                 pet.setImagePath('https://media.cnn.com/api/v1/images/stellar/prod/220818142713-dogs-tears-emotions-wellness-stock.jpg?c=16x9');
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => PetInfoDisplay(
@@ -68,6 +69,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                             child: PetProfileWidget(
                               imagePath: 'https://people.com/thmb/SL7_3mF5irtEm4Kz8f63FWDrmPA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/dog-dating-1-a1a34ab3445740fcadf8699850c8333b.jpg',
                               onClicked: () {
+                                pet.setIndex(user.getNumberOfPets());
                                 pet.setImagePath('https://people.com/thmb/SL7_3mF5irtEm4Kz8f63FWDrmPA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/dog-dating-1-a1a34ab3445740fcadf8699850c8333b.jpg');
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => PetInfoDisplay(
@@ -79,6 +81,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                           PetProfileWidget(
                             imagePath: 'https://media.istockphoto.com/id/149425119/photo/german-shepherd-isolated-on-white.jpg?s=612x612&w=0&k=20&c=gvtU0eFUSEFh7BP6MUThYD754CTwiLkTz4ICQhWGgHU=',
                             onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
                               pet.setImagePath('https://media.istockphoto.com/id/149425119/photo/german-shepherd-isolated-on-white.jpg?s=612x612&w=0&k=20&c=gvtU0eFUSEFh7BP6MUThYD754CTwiLkTz4ICQhWGgHU=');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
@@ -96,6 +99,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                           PetProfileWidget(
                             imagePath: 'https://previews.123rf.com/images/kirsanovv/kirsanovv0810/kirsanovv081000038/3693796-a-portrait-of-the-very-shaggy-small-dog-with-intent-look-profile.jpg',
                             onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
                               pet.setImagePath('https://previews.123rf.com/images/kirsanovv/kirsanovv0810/kirsanovv081000038/3693796-a-portrait-of-the-very-shaggy-small-dog-with-intent-look-profile.jpg');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
@@ -106,6 +110,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                           PetProfileWidget(
                             imagePath: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2BZZCOMpTJKljCt84bVU0ejbjG_NTDwYvY40i5HHaAbOOgZUHzryniPpwDHQJ8sftNIqpacetjRA&usqp=CAU&ec=48665698',
                             onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
                               pet.setImagePath('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2BZZCOMpTJKljCt84bVU0ejbjG_NTDwYvY40i5HHaAbOOgZUHzryniPpwDHQJ8sftNIqpacetjRA&usqp=CAU&ec=48665698');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(
@@ -116,6 +121,7 @@ class MyCreatePetProfile4 extends StatelessWidget
                           PetProfileWidget(
                             imagePath: 'https://people.com/thmb/WxJfkZ3MCkXFhY1GgWzuJLqDgDc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1019x626:1021x628)/dog-dating-2522ccf2b0e04f94a29f25fdb81d79af.jpg',
                             onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
                               pet.setImagePath('https://people.com/thmb/WxJfkZ3MCkXFhY1GgWzuJLqDgDc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1019x626:1021x628)/dog-dating-2522ccf2b0e04f94a29f25fdb81d79af.jpg');
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => PetInfoDisplay(

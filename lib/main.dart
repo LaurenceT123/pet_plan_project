@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'signin_login_screens/login_screen.dart';
 import 'signin_login_screens/signUp_screen.dart';
 import 'signin_login_screens/createPetProfile_screen.dart';
 import 'package:provider/provider.dart';
@@ -36,10 +35,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes:
       {
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/loginScreen': (context) => const MyLoginScreen(title: 'login page'),
+        // When navigating to the "/second" route, build the SecondScreen widget
         '/signUpScreen': (context) => const MySignUpScreen(title: 'sign up page'),
-        '/createPetProfile': (context) => const MyCreatePetProfileScreen(title:'Create your new Pet Profile!'),
       },
     ),
   );
@@ -57,17 +54,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void _goToLogin()
-  {
-    Navigator.pushNamed(context, '/loginScreen');
-  }
   void _goToSignUp()
   {
     Navigator.pushNamed(context, '/signUpScreen');
-  }
-  void _goToCreatePetProfile()
-  {
-    Navigator.pushNamed(context,'/createPetProfile');
   }
   @override
   Widget build(BuildContext context) {
@@ -107,71 +96,37 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
             ),
 
-            //Create new Pet Profile Button
-            Expanded(
-              flex:10,
-                child:
-                Column(
-                  children: [
-                    SizedBox(
-                      width:250.0,
-                      child: OutlinedButton(
-                        onPressed: _goToCreatePetProfile,
-                        child: Text('Create Pet Profile'),
-                        ),
-                      ),
-                  Text('Note: Data will not be saved without logging in'),
-                  ]
-                ),
-            ),
-
             //Space between buttons
             SizedBox(height:40),
 
             Expanded(
-              flex:30,
-              child: Column(
-                children: [
-
-                  Container(
-                    width: 200,
-                    child: ElevatedButton(
-                      child: Text('Login'),
-                      onPressed: _goToLogin,
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(color: Colors.blue.shade100)
-                            )
-                        ),
+              flex:20,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: 200,
+                  height: 30,
+                  child: ElevatedButton(
+                    child: Text('Get Started!', style: TextStyle(
+                      fontSize: 25,
+                    ),),
+                    onPressed: _goToSignUp,
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all(Colors.white), //font color
+                      backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.blue.shade100)
+                          )
                       ),
                     ),
                   ),
-
-                  Container(
-                    width: 200,
-                    child: ElevatedButton(
-                      child: Text('Sign Up'),
-                      onPressed: _goToSignUp,
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(color: Colors.blue.shade100)
-                            )
-                        ),
-                      ),
-                    ),
-                  ),
-
-                ]
+                ),
               ),
             ),
+
+            SizedBox(height:40),
 
           ],
         ),

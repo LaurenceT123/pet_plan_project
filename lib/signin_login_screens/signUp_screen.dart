@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
 import '../main.dart';
-
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
-      },
-    ),
-  );
-}
+import '../models/User.dart';
 
 class MySignUpScreen extends StatefulWidget
 {
@@ -29,14 +14,33 @@ class MySignUpScreen extends StatefulWidget
 
 class _MySignUpScreenState extends State<MySignUpScreen> {
 
-  void _goTo() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPetProfiles_screen(title: 'test')),);
-
-  }
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  User user = new User (imagePath: ' ', name: ' ', email: ' ');
 
   @override
   Widget build(BuildContext context)
   {
+
+
+    goTo() {
+
+      if(!nameController.text.isEmpty && !emailController.text.isEmpty) {
+
+        user.setImagePath('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
+        user.setName(nameController.text);
+        user.setEmail(emailController.text);
+
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => MyPetProfiles_screen(user: user)),);
+      }
+      else
+        {
+          print("Try again, input email and name are required!");
+        }
+
+    }
+
     return Scaffold(
       appBar: AppBar(
 
@@ -70,16 +74,7 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                           border: OutlineInputBorder(),
                           labelText: 'Name',
                         ),
-                      ),
-
-                      SizedBox(height:20),
-
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Username',
-                        ),
+                        controller:nameController,
                       ),
 
                       SizedBox(height:20),
@@ -90,33 +85,16 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
                           border: OutlineInputBorder(),
                           labelText: 'Email',
                         ),
+                        controller: emailController,
                       ),
 
-                      SizedBox(height:20),
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Password',
-                        ),
-                      ),
-
-                      SizedBox(height:20),
-
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Re-type Password',
-                        ),
-                      ),
 
                       SizedBox(height:20),
 
                       Container(
                         width:150.0,
                         child: OutlinedButton(
-                          onPressed: _goTo, //toDo
+                          onPressed: goTo, //toDo
                           child: Text('Submit'),
                         ),
 
@@ -131,5 +109,7 @@ class _MySignUpScreenState extends State<MySignUpScreen> {
         ),
       ),
     );
+
+
   }
 }

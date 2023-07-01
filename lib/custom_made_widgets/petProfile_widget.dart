@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class PetProfileWidget extends StatelessWidget {
   final String imagePath;
   final bool isEdit;
+  bool isSelected;
   final VoidCallback onClicked;
 
-  const PetProfileWidget({
+  PetProfileWidget({
     Key? key,
     required this.imagePath,
     this.isEdit = false,
+    this.isSelected = false,
     required this.onClicked,
   }) : super(key: key);
 
@@ -22,19 +24,26 @@ class PetProfileWidget extends StatelessWidget {
       ),
     );
   }
+  
+  void setIsSelected(bool value)
+  {
+    isSelected = value;
+  }
 
   Widget buildImage()
   {
     final image = NetworkImage(imagePath);
 
     return ClipOval(
-      child: Material(
-        child:Ink.image(
-          image: image,
-          fit: BoxFit.cover,
-          width: 110,
-          height: 110,
-          child: InkWell(onTap: onClicked),
+      child: Container(
+        child: Material(
+          child:Ink.image(
+            image: image,
+            fit: BoxFit.cover,
+            width: 110,
+            height: 110,
+            child: InkWell(onTap: onClicked),
+          ),
         ),
       ),
     );

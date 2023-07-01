@@ -7,7 +7,6 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import '../custom_made_widgets/input_field.dart';
 import 'dailySchedule.dart';
 import 'package:get/get.dart';
-import '../models/task.dart';
 import '../models/Event.dart';
 import '../db/event_provider.dart';
 

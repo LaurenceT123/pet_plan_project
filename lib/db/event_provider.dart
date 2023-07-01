@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../models/Event.dart';
+import '../models/User.dart';
+import '../models/Pet.dart';
 
 class EventProvider extends ChangeNotifier {
+
   final List<Event> _events = [];
 
   List<Event> get events => _events;

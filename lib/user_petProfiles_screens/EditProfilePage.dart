@@ -1,59 +1,39 @@
 import 'package:flutter/material.dart';
-import '../user_info/user_preferences.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../main.dart';
 import 'petProfiles.dart';
+import '../models/User.dart';
 
-void main() => runApp(MyEditProfile_screen(title: 'test'));
+class MyEditProfile_screen extends StatelessWidget {
 
-class MyEditProfile_screen extends StatefulWidget
-{
-  const MyEditProfile_screen({super.key, required this.title});
-  final String title;
+  final User user;
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
 
-  @override
-  State<MyEditProfile_screen> createState() => _EditProfileState();
-}
-
-class _EditProfileState extends State<MyEditProfile_screen> {
+  MyEditProfile_screen({super.key, required this.user});
 
   @override
-  Widget build(BuildContext context)
-  {
-
-    final user = UserPreferences.myUser;
-
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
-      },
-    );
+  Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Profile'),
       ),
       body: Column(
-          children:[
+          children: [
 
             Expanded(
-              flex:50,
+              flex: 50,
               child: ProfileWidget( //self-built profile widget, code located in profile_widget.dart
-                imagePath: user.imagePath,
+                imagePath: 'https://static.hudl.com/users/prod/5499830_8e273ea3a64448478f1bb0af5152a4c7.jpg',
                 isEdit: true,
-                onClicked: () async{}, //toDo
+                onClicked: () {}, //toDo
               ),
 
             ),
 
             Expanded(
-              flex:50,
+              flex: 50,
               child: Container(
                 width: 350.0,
                 child: Column(
@@ -64,47 +44,66 @@ class _EditProfileState extends State<MyEditProfile_screen> {
                         obscureText: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: user.name,
+                          labelText: 'test',
                         ),
+                        controller: nameController,
                       ),
 
-                      SizedBox(height:10),
+                      SizedBox(height: 10),
 
                       Text('Email:'),
                       TextField(
                         obscureText: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: user.email,
+                          labelText: 'email',
                         ),
+                        controller: emailController,
                       ),
-                      SizedBox(height:5),
+                      SizedBox(height: 5),
 
                       Container(
-                        margin: EdgeInsets.only(top:30,bottom: 10),
+                        margin: EdgeInsets.only(top: 30, bottom: 10),
                         width: 200,
                         child: ElevatedButton(
-                          child: Text('Change Password'),
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'test')),);},
+                          child: Text('Change Phone Number'),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (
+                                context) => const MyHomePage(title: 'test')),);
+                          },
                           style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                            backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            foregroundColor: MaterialStateProperty.all(
+                                Colors.white), //font color
+                            backgroundColor: MaterialStateProperty.all(
+                                Colors.blue.shade200), //background color
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.blue.shade100)
+                                    side: BorderSide(
+                                        color: Colors.blue.shade100)
                                 )
                             ),
                           ),
                         ),
                       ),
 
-                          Container(
-                            width:150.0,
-                            child:OutlinedButton(
-                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPetProfiles_screen(title: 'test')),);},
-                              child: Text('Save Changes'),
-                            ),
+                      Container(
+                        width: 150.0,
+                        child: OutlinedButton(
+                          onPressed: () {
+
+                            if(!nameController.text.isEmpty) {
+                              user.setName(nameController.text);
+                            }
+                            if(!emailController.text.isEmpty) {
+                              user.setEmail(emailController.text);
+                            }
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MyPetProfiles_screen(user: user)),);
+                          },
+                          child: Text('Save Changes'),
+                        ),
 
 
                       ),
@@ -114,7 +113,8 @@ class _EditProfileState extends State<MyEditProfile_screen> {
             ),
 
           ]
-        ),
+      ),
     );
   }
+
 }

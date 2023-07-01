@@ -4,34 +4,24 @@ import '../user_petProfiles_screens/petProfiles.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import '../signin_login_screens/createPet4_screen.dart';
 
-void main() => runApp(MyCreatePetProfile3(title: 'test'));
+import '../models/Pet.dart';
+import '../models/User.dart';
 
-class MyCreatePetProfile3 extends StatefulWidget
+import '../custom_made_widgets/input_field.dart';
+
+class MyCreatePetProfile3 extends StatelessWidget
 {
-  const MyCreatePetProfile3({super.key, required this.title});
-  final String title;
+  final User user;
+  final Pet pet;
 
-  @override
-  State<MyCreatePetProfile3> createState() => _MyCreatePetProfile3State();
-}
+  MyCreatePetProfile3({super.key, required this.user, required this.pet});
 
-class _MyCreatePetProfile3State extends State<MyCreatePetProfile3> {
+
+  final nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context)
   {
-
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
-      },
-    );
 
     return Scaffold(
         appBar: AppBar(
@@ -46,19 +36,8 @@ class _MyCreatePetProfile3State extends State<MyCreatePetProfile3> {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    Text("Name"),
 
-                    SizedBox(
-                      height: 30,
-                      child: TextField(
-                        obscureText: false,
-                        expands: true,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                    ),
+                    MyInputField(title: 'Name', hint: 'Enter name', controller: nameController),
 
                     Text("Medications"),
 
@@ -96,7 +75,19 @@ class _MyCreatePetProfile3State extends State<MyCreatePetProfile3> {
                 width: 200,
                 child: ElevatedButton(
                   child: Text('Next'),
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfile4(title: 'test')),);},
+                  onPressed: () {
+
+                    if(!nameController.text.isEmpty) {
+
+                      pet.setName(nameController.text);
+
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => MyCreatePetProfile4(
+                              user: user, pet: pet)),);
+                     }
+
+
+                    },
                   style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(Colors.white), //font color
                     backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color

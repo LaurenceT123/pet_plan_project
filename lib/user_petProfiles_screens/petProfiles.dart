@@ -1,127 +1,217 @@
 import 'package:flutter/material.dart';
-import '../user_info/user_preferences.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../main.dart';
 import 'EditProfilePage.dart';
 import '../signin_login_screens/createPetProfile_screen.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import 'petProfiles2.dart';
+import '../models/User.dart';
+import '../user_petProfiles_screens/choosePetProfile.dart';
 
 void main() {
-
   WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(MyPetProfiles_screen(title: 'test'));
 }
-class MyPetProfiles_screen extends StatefulWidget
+
+class MyPetProfiles_screen extends StatelessWidget
 {
-  const MyPetProfiles_screen({super.key, required this.title});
-  final String title;
+
+  final User user;
+
+  MyPetProfiles_screen({super.key, required this.user});
 
   @override
-  State<MyPetProfiles_screen> createState() => _petProfileState();
-}
-
-class _petProfileState extends State<MyPetProfiles_screen> {
-
-  @override
-  Widget build(BuildContext context)
-  {
-
-    final user = UserPreferences.myUser;
-
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/': (context) => const MyHomePage(title: 'Welcome to Pet Plan'),
-      },
-    );
+  Widget build(BuildContext context) {
 
     return Scaffold(
-        body: Column(
+      body: Column(
           children: [
-
-            Expanded(
-              flex:40,
-              child: Column(
-                children: [
-                  SizedBox(height:100.0,),
-
-                  ProfileWidget( //self-built profile widget, code located in profile_widget.dart
-                    imagePath: user.imagePath,
-                    onClicked: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const MyEditProfile_screen(title: 'test')),);
-                    },
-                  ),
-
-                  Text(
-                    'Welcome ' + user.name,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize:35),
-                  ),
-                ]
-              ),
-            ),
 
             Expanded(
               flex: 50,
               child: Column(
-                children: [
+                  children: [
+                    SizedBox(height: 100.0,),
 
-                  Text('PET PROFILES', style: TextStyle(fontSize:25, color: Colors.grey),),
-                  SizedBox(height: 40), //create space between title and widgets
-
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Wrap(
-                        alignment: WrapAlignment.spaceAround,
-                        direction: Axis.vertical,
-                        spacing: 20,
-                        runSpacing: 20,
-                        children: [
-                            PetProfileWidget(
-                              imagePath: 'https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
-                              onClicked:(){ Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPetProfiles2_screen(title: 'test')),);},
-                            ),
-
-                            //Add Pet Profile
-                            PetProfileWidget(
-                              imagePath: 'https://pixlok.com/wp-content/uploads/2021/12/Add-Icon-SVG-98ygj.png',
-                              onClicked:() {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyCreatePetProfileScreen(title: 'test')),);},
-                            ),
-                        ]
+                    ProfileWidget( //self-built profile widget, code located in profile_widget.dart
+                      imagePath: 'https://static.hudl.com/users/prod/5499830_8e273ea3a64448478f1bb0af5152a4c7.jpg',
+                      onClicked: () {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => MyEditProfile_screen(
+                                user: user)),);
+                      },
                     ),
-                  ),
-                ],
+
+                    Text(
+                      'Welcome ' + user.getName(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 35),
+                    ),
+
+                    Text(user.getEmail(),
+                      style: TextStyle(fontSize: 25, color: Colors.grey),),
+                    SizedBox(height: 40), //create space between title and widgets
+
+                  ]
               ),
             ),
 
-            Container(
-              margin: EdgeInsets.only(top:30,bottom: 30),
-              width: 200,
-              child: ElevatedButton(
-                child: Text('Logout'),
-                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'test')),);},
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                  backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.blue.shade100)
-                      )
-                  ),
+
+            Expanded(
+              flex:20,
+              child: Center(
+                child: Column(
+                  children: [
+
+
+                    Text(user.getNumberOfPets().toString(), style: TextStyle(fontSize: 30, color: Colors.grey)),
+
+                    Padding(
+                      padding: const EdgeInsets.only(right:10),
+                      child: Container(
+                        width: 250,
+                        height: 40,
+                        child: ElevatedButton(
+                          child: Text('Add New Pet Profile', style: TextStyle(fontSize: 20, color: Colors.white),),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => MyCreatePetProfileScreen(user: user)),);
+                          },
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all(Colors.white),
+                            //font color
+                            backgroundColor: MaterialStateProperty.all(
+                                Colors.blue.shade200),
+                            //background color
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: BorderSide(color: Colors.blue.shade100)
+                                )
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+                  ],
                 ),
               ),
             ),
 
+            SizedBox(height: 70),
+
+            Expanded(
+              flex:20,
+              child: Column(
+                children: [
+
+                  Row(
+                    children: [
+
+                      Expanded(
+                        flex: 30,
+                        child: Icon(
+                          Icons.pets,
+                          color: Colors.blue,
+                          size: 30.0,
+                        ),
+                      ),
+
+                      Expanded(
+                        flex:60,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right:10),
+                          child: Container(
+                            width: 250,
+                            height: 40,
+                            child: ElevatedButton(
+                              child: Text('View Pet Profiles', style: TextStyle(fontSize: 20, color: Colors.white),),
+                              onPressed: () {
+                                if(user.getNumberOfPets() != 0) {
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) =>
+                                          MyChoosePetProfile(user: user)),);
+                                }
+                                else
+                                  {
+                                    print("There are no Pet Profiles!");
+                                  }
+                              },
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                //font color
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.blue.shade200),
+                                //background color
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        side: BorderSide(color: Colors.blue.shade100)
+                                    )
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+
+                      Expanded(
+                        flex: 30,
+                        child: Icon(
+                          Icons.store,
+                          color: Colors.blue,
+                          size: 30.0,
+                        ),
+                      ),
+
+                      Expanded(
+                        flex: 60,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top:10,right: 8),
+                          child: SizedBox(
+                            width: 250,
+                            height: 40,
+                            child: ElevatedButton(
+                              child: Text('Vet Info', style: TextStyle(fontSize: 20, color: Colors.white),),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => MyChoosePetProfile(user: user)),);
+                              },
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                //font color
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.blue.shade200),
+                                //background color
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        side: BorderSide(color: Colors.blue.shade100)
+                                    )
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                ],
+              ),
+            ),
 
           ]
-        ),
+      ),
     );
+
   }
+
 }

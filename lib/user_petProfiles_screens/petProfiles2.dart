@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import 'EditProfilePage.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
-import '../pet_profiles_info/pet_preferences.dart';
 import '../dailySchedule_screens/dailySchedule.dart';
 import '../db/event_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +33,6 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
 
     final events = Provider.of<EventProvider>(context).events;
 
-    final user = PetPreferences.myUser;
 
     MaterialApp(
       title: 'Named Routes Demo',
@@ -67,8 +65,7 @@ class _petProfile2State extends State<MyPetProfiles2_screen> {
                       ),
                     ),
 
-                    Text(user.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize:35),
-                    ),
+                    Text('Biscuit'),
                   ]
               ),
             ),

@@ -9,14 +9,18 @@ import 'dailySchedule.dart';
 import 'package:get/get.dart';
 import '../models/Event.dart';
 import '../db/event_provider.dart';
+import '../models/Pet.dart';
+
 
 class AddTaskPage_screen extends StatefulWidget
 {
   final Event? event;
+  final Pet pet;
 
   const AddTaskPage_screen({
     Key? key,
     this.event,
+    required this.pet
   }) : super(key: key);
 
   @override
@@ -37,17 +41,17 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
     super.initState();
 
     if(widget.event == null)
-      {
-        fromDate = DateTime.now();
-        toDate = DateTime.now().add(Duration(hours:2));
-      }
+    {
+      fromDate = DateTime.now();
+      toDate = DateTime.now().add(Duration(hours:2));
+    }
     else
-      {
-        final event = widget.event!;
-        titleController.text = event.title;
-        fromDate = event.startTime;
-        toDate = event.endTime;
-      }
+    {
+      final event = widget.event!;
+      titleController.text = event.title;
+      fromDate = event.startTime;
+      toDate = event.endTime;
+    }
   }
 
   @override
@@ -59,10 +63,10 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        leading: CloseButton(),
-        actions: buildEditingActions(),
-      ),
+    appBar: AppBar(
+      leading: CloseButton(),
+      actions: buildEditingActions(),
+    ),
 
     body: SingleChildScrollView(
       padding: EdgeInsets.all(12),
@@ -81,84 +85,84 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
       ),
     ),
 
-    );
+  );
 ///////////////////////////////////////////////////////////////////////////
-    List<Widget> buildEditingActions() => [
-      ElevatedButton.icon(
-        onPressed: saveForm,
-        icon: Icon(Icons.done),
-        label: Text('SAVE'),
-        style: ElevatedButton.styleFrom(
-          primary: Colors.transparent,
-          shadowColor: Colors.transparent,
-        ),
-      )
-    ];
-
-    Widget buildTitle() => TextFormField(
-      style: TextStyle(fontSize:24),
-      decoration: InputDecoration(
-        border: UnderlineInputBorder(),
-        hintText: 'Add Title',
+  List<Widget> buildEditingActions() => [
+    ElevatedButton.icon(
+      onPressed: saveForm,
+      icon: Icon(Icons.done),
+      label: Text('SAVE'),
+      style: ElevatedButton.styleFrom(
+        primary: Colors.transparent,
+        shadowColor: Colors.transparent,
       ),
-      onFieldSubmitted: (_) {},
-      validator: (title) =>
-      title != null && title.isEmpty ? 'Title cannot be empty':null,
-      controller: titleController,
-    );
+    )
+  ];
+
+  Widget buildTitle() => TextFormField(
+    style: TextStyle(fontSize:24),
+    decoration: InputDecoration(
+      border: UnderlineInputBorder(),
+      hintText: 'Add Title',
+    ),
+    onFieldSubmitted: (_) {},
+    validator: (title) =>
+    title != null && title.isEmpty ? 'Title cannot be empty':null,
+    controller: titleController,
+  );
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-    Widget buildDateTimePickers() => Column (
+  Widget buildDateTimePickers() => Column (
       children: [
         buildForm(),
         buildTo(),
       ]
-    );
+  );
 
-    Widget buildForm() => buildHeader(
-      header: 'From',
-      child: Row(
-        children: [
-          //Get Start Date
-          Expanded(
-            flex:2,
-            child: buildDropDownField(
-              text: DateFormat.yMMMEd().format(fromDate),
-              onClicked: () {pickFromDateTime(pickDate: true);},
-            ),
+  Widget buildForm() => buildHeader(
+    header: 'From',
+    child: Row(
+      children: [
+        //Get Start Date
+        Expanded(
+          flex:2,
+          child: buildDropDownField(
+            text: DateFormat.yMMMEd().format(fromDate),
+            onClicked: () {pickFromDateTime(pickDate: true);},
           ),
+        ),
 
-          //Get Start Time
-          Expanded(
-            child: buildDropDownField(
-              text: DateFormat.jm().format(fromDate),
-              onClicked: () {pickFromDateTime(pickDate: false);},
-            ),
+        //Get Start Time
+        Expanded(
+          child: buildDropDownField(
+            text: DateFormat.jm().format(fromDate),
+            onClicked: () {pickFromDateTime(pickDate: false);},
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ),
+  );
 
-    Widget buildDropDownField({
+  Widget buildDropDownField({
     required String text,
-      required VoidCallback onClicked,
-    }) =>
-        ListTile(
+    required VoidCallback onClicked,
+  }) =>
+      ListTile(
           title: Text(text, style: TextStyle(fontSize:15)),
           trailing: Icon(Icons.arrow_drop_down),
           onTap: onClicked
-        );
+      );
 
-    Widget buildHeader({
-      required String header,
-      required Widget child,
-    }) => Column(
+  Widget buildHeader({
+    required String header,
+    required Widget child,
+  }) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(header, style: TextStyle(fontWeight: FontWeight.bold, fontSize:20)),
         child,
       ]
-    );
+  );
 
 
   Widget buildTo() => buildHeader(
@@ -198,8 +202,8 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
 
   Future pickToDateTime({required bool pickDate}) async {
     final date = await pickDateTime(
-        toDate,
-        pickDate:pickDate,
+      toDate,
+      pickDate:pickDate,
       firstDate: pickDate ? fromDate : null,
 
     );
@@ -227,46 +231,47 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
     return date.add(time);
     }
     else
-      {
-        final timeOfDay = await showTimePicker(
-          context: context,
-          initialTime: TimeOfDay.fromDateTime(initialDate),
-        );
+    {
+      final timeOfDay = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(initialDate),
+      );
 
-        if(timeOfDay == null) return null;
+      if(timeOfDay == null) return null;
 
-        final date = DateTime(initialDate.year, initialDate.month, initialDate.day);
+      final date = DateTime(initialDate.year, initialDate.month, initialDate.day);
 
-        final time = Duration(hours: timeOfDay.hour, minutes: timeOfDay.minute);
+      final time = Duration(hours: timeOfDay.hour, minutes: timeOfDay.minute);
 
-        return date.add(time);
-      }
+      return date.add(time);
+    }
   }
 
 ////////////////////////////////////////////////////////////////////////////
 
   Future saveForm() async
   {
+    Pet pet = widget.pet;
     final isValid = _formKey.currentState!.validate();
 
     if(isValid)
     {
       final event = Event(
-          title: titleController.text,
-          description: 'Description',
-          startTime: fromDate,
-          endTime: toDate,
-          repeat: false,
+        title: titleController.text,
+        description: 'Description',
+        startTime: fromDate,
+        endTime: toDate,
+        repeat: false,
       );
 
       final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider> (context, listen:false);
 
       if(isEditing)
-        {
-          provider.editEvent(event, widget.event!);
-          Navigator.of(context).pop();
-        }
+      {
+        provider.editEvent(event, widget.event!);
+        Navigator.of(context).pop();
+      }
       else {
         provider.addEvent(event);
         Navigator.of(context).pop();
@@ -275,4 +280,3 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
   }
 
 }
-

@@ -6,15 +6,18 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../dailySchedule_screens/event_viewing_screen.dart';
 import '../models/Event.dart';
+import '../models/Pet.dart';
 import 'package:intl/intl.dart';
 import '../dailySchedule_screens/add_task_bar.dart';
 
 class EventViewingPage extends StatelessWidget {
   final Event event;
+  final Pet pet;
 
   const EventViewingPage({
     Key? key,
     required this.event,
+    required this.pet
   }) : super(key:key);
 
 
@@ -26,7 +29,7 @@ class EventViewingPage extends StatelessWidget {
           icon: const Icon(Icons.edit),
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => AddTaskPage_screen(event: event),
+              builder: (context) => AddTaskPage_screen(event: event, pet:pet),
             ),);
           },
         ),

@@ -5,7 +5,7 @@ import '../models/Pet.dart';
 
 class EventProvider extends ChangeNotifier {
 
-  final List<Event> _events = [];
+  List<Event> _events = [];
 
   List<Event> get events => _events;
 
@@ -21,6 +21,12 @@ class EventProvider extends ChangeNotifier {
   {
     _events.add(event);
     notifyListeners();
+  }
+
+  List<Event> setEventList (List<Event> newList)
+  {
+    _events = newList;
+    return _events;
   }
 
   void editEvent(Event newEvent, Event oldEvent)

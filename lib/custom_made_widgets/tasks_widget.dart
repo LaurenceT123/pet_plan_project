@@ -5,8 +5,17 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../dailySchedule_screens/event_viewing_screen.dart';
+import '../models/Pet.dart';
 
 class TasksWidget extends StatefulWidget {
+
+  final Pet pet;
+
+  const TasksWidget({
+    Key? key,
+    required this.pet
+  }) : super(key:key);
+
   @override
   _TasksWidgetState createState() => _TasksWidgetState();
 
@@ -40,7 +49,7 @@ class _TasksWidgetState extends State<TasksWidget> {
 
           final event = details.appointments!.first;
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => EventViewingPage(event:event),
+            builder: (context) => EventViewingPage(event:event, pet:widget.pet),
           ));
 
         },

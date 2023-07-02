@@ -1,3 +1,4 @@
+import '../models/Event.dart';
 
 class Pet
 {
@@ -55,8 +56,22 @@ class Pet
 
 
 
+  List <Event> _schedule = [];
 
+  void addEvent(Event e)
+  {
+    _schedule.add(e);
+  }
 
+  List <Event> getSchedule ()
+  {
+    return _schedule;
+  }
+
+  void removeEvent(int index)
+  {
+    _schedule.remove(index);
+  }
 
 
 }

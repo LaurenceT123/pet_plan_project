@@ -26,7 +26,7 @@ class MyPetProfiles2_screen extends StatelessWidget
   Widget build(BuildContext context)
   {
 
-    final events = Provider.of<EventProvider>(context).events;
+    final events = Provider.of<EventProvider>(context).setEventList(pet.getSchedule());
 
     return Scaffold(
       appBar: AppBar(
@@ -96,7 +96,7 @@ class MyPetProfiles2_screen extends StatelessWidget
                     width: 300,
                     child: ElevatedButton(
                       child: Text('Add/Edit Events'),
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const MyDailySchedule_screen(title: 'test')),);},
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyDailySchedule_screen(user:user,pet:pet)),);},
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
                         backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color

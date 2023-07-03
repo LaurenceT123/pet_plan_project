@@ -30,8 +30,14 @@ class EventProvider extends ChangeNotifier {
   void editEvent(Event newEvent, Event oldEvent)
   {
     final index = _events.indexOf(oldEvent);
-    _events[index] = newEvent;
-    notifyListeners();
+    if(index != -1) {
+      _events[index] = newEvent;
+      notifyListeners();
+    }
+    else
+      {
+        print('could not find event');
+      }
   }
 
   void deleteEvent(Event oldEvent)

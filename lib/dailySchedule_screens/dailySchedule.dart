@@ -13,6 +13,7 @@ import '../user_petProfiles_screens/petProfiles2.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/Event.dart';
+import '../models/VetInfo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,8 +21,9 @@ void main() async {
 class MyDailySchedule_screen extends StatelessWidget
 {
   final User user;
+  final VetInfo vet;
   final Pet pet;
-  MyDailySchedule_screen({super.key, required this.user, required this.pet});
+  MyDailySchedule_screen({super.key, required this.user, required this.pet, required this.vet});
 
   DateTime _selectedDate = DateTime.now();
 
@@ -82,7 +84,7 @@ class MyDailySchedule_screen extends StatelessWidget
                   child: Center(child: TextButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (
-                            context) => AddTaskPage_screen(pet:pet),),);
+                            context) => AddTaskPage_screen(pet:pet, vet:vet, user:user),),);
                       },
                       child: Text(
                           "+ Add Task",
@@ -103,7 +105,7 @@ class MyDailySchedule_screen extends StatelessWidget
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
-                          MyPetProfiles2_screen(user: user, pet:pet)));
+                          MyPetProfiles2_screen(user: user, pet:pet, vet:vet)));
                 },
                 tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               );
@@ -141,7 +143,7 @@ class MyDailySchedule_screen extends StatelessWidget
 
                       showModalBottomSheet(
                         context: context,
-                        builder: (context) => TasksWidget(user:user,pet:pet),
+                        builder: (context) => TasksWidget(user:user,pet:pet, vet:vet),
                       );
                     },
                     onTap: (details) {
@@ -149,7 +151,7 @@ class MyDailySchedule_screen extends StatelessWidget
                       final event = details.appointments!.first;
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              EventViewingPage(user: user, event: event, pet:pet)));
+                              EventViewingPage(user: user, event: event, pet:pet, vet:vet)));
                     },
                   ),
                 )

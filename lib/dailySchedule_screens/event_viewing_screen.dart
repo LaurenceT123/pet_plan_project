@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../models/User.dart';
 import '../models/Event.dart';
 import '../models/Pet.dart';
+import '../models/VetInfo.dart';
 import 'package:intl/intl.dart';
 import '../dailySchedule_screens/add_task_bar.dart';
 import '../db/event_provider.dart';
@@ -12,12 +13,14 @@ class EventViewingPage extends StatelessWidget {
   final User user;
   final Event event;
   final Pet pet;
+  final VetInfo vet;
 
   const EventViewingPage({
     Key? key,
     required this.user,
     required this.event,
-    required this.pet
+    required this.pet,
+    required this.vet,
   }) : super(key:key);
 
   Widget build(BuildContext context) {
@@ -25,14 +28,12 @@ class EventViewingPage extends StatelessWidget {
     delete()
     {
       final provider = Provider.of<EventProvider> (context, listen:false);
-
-      print('click clack');
       pet.removeEvent(event);
       provider.deleteEvent(event);
 
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) =>
-              MyDailySchedule_screen(user: user, pet:pet)));
+              MyDailySchedule_screen(user: user, pet:pet, vet:vet)));
 
     }
 
@@ -45,7 +46,7 @@ class EventViewingPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            MyDailySchedule_screen(user: user, pet:pet)));
+                            MyDailySchedule_screen(user: user, pet:pet, vet:vet)));
                   },
                   tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
                 );
@@ -57,7 +58,7 @@ class EventViewingPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) =>
-                        AddTaskPage_screen(event: event, pet: pet),
+                        AddTaskPage_screen(event:event, pet: pet, vet:vet, user:user),
                   ),);
                 },
               ),

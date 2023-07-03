@@ -58,9 +58,10 @@ class Pet
 
   List <Event> _schedule = [];
 
-  void addEvent(Event e)
+  void addEvents(Event e)
   {
     _schedule.add(e);
+    print("Pets" + _schedule.length.toString());
   }
 
   List <Event> getSchedule ()
@@ -71,7 +72,11 @@ class Pet
   void EditEvent(Event oldEvent, Event newEvent)
   {
     int index = findEvent(oldEvent);
-    _schedule[index] = newEvent;
+
+    if(index != -1)
+    {
+      _schedule[index] = newEvent;
+    }
   }
 
   int findEvent(Event event)
@@ -79,27 +84,13 @@ class Pet
     int index = -1;
     for(int i = 0; i < _schedule.length; i++)
       {
-        if(matchEvent(event, _schedule[i]))
+        if(identical(event, _schedule[i]))
           {
             index = i;
           }
       }
 
     return index;
-  }
-
-  bool matchEvent(Event event, Event anotherEvent)
-  {
-    bool answer = false;
-    if(event.getTitle() == anotherEvent.getTitle()
-    && event.getDescription() == anotherEvent.getDescription()
-    && event.getStartTime() == anotherEvent.getStartTime()
-    && event.getEndTime() == anotherEvent.getEndTime())
-      {
-        return true;
-      }
-
-    return answer;
   }
 
   void removeEvent(Event event)

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import 'petProfiles2.dart';
 import '../models/User.dart';
+import '../models/VetInfo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,8 +12,9 @@ class MyChoosePetProfile extends StatelessWidget
 {
 
   final User user;
+  final VetInfo vet;
 
-  MyChoosePetProfile({super.key, required this.user});
+  MyChoosePetProfile({super.key, required this.user, required this.vet});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class MyChoosePetProfile extends StatelessWidget
                               print('Clicked!');
 
                               Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) =>new MyPetProfiles2_screen(user:user,pet:user.getPet()[index])),);
+                                  builder: (context) =>new MyPetProfiles2_screen(user:user,pet:user.getPet()[index], vet:vet)),);
                             },
                           ),
 

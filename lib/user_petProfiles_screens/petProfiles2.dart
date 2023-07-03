@@ -7,6 +7,8 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../models/User.dart';
 import '../models/Pet.dart';
+import '../models/VetInfo.dart';
+import '../user_petProfiles_screens/petProfiles.dart';
 
 void main() {
 
@@ -15,9 +17,10 @@ void main() {
 class MyPetProfiles2_screen extends StatelessWidget
 {
   final User user;
+  final VetInfo vet;
   final Pet pet;
 
-  const MyPetProfiles2_screen({super.key, required this.user, required this.pet});
+  const MyPetProfiles2_screen({super.key, required this.user, required this.pet, required this.vet});
 
   @override
   Widget build(BuildContext context)
@@ -27,6 +30,19 @@ class MyPetProfiles2_screen extends StatelessWidget
 
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.keyboard_arrow_left),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        MyPetProfiles_screen(user: user, vet: vet)));
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
       ),
       body: Column(
           children: [
@@ -92,8 +108,8 @@ class MyPetProfiles2_screen extends StatelessWidget
                   Container(
                     width: 300,
                     child: ElevatedButton(
-                      child: Text('Add/Edit Events'),
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyDailySchedule_screen(user:user,pet:pet)),);},
+                      child: Text('Add/Edit/Delete Events'),
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyDailySchedule_screen(user:user,pet:pet, vet:vet)),);},
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
                         backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color

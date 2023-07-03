@@ -4,16 +4,24 @@ import 'package:intl/intl.dart';
 import '../models/Event.dart';
 import '../db/event_provider.dart';
 import '../models/Pet.dart';
+import '../models/VetInfo.dart';
+import '../models/User.dart';
+import '../dailySchedule_screens/dailySchedule.dart';
+import '../dailySchedule_screens/refresh_screen.dart';
 
 
 class AddTaskPage_screen extends StatefulWidget
 {
+  final User user;
   final Event? event;
+  final VetInfo vet;
   final Pet pet;
 
   const AddTaskPage_screen({
     Key? key,
     this.event,
+    required this.user,
+    required this.vet,
     required this.pet
   }) : super(key: key);
 
@@ -290,14 +298,18 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
 
       if(isEditing)
       {
+        //provider.editEvent(event, widget.event!);
         pet.EditEvent(widget.event!,event);
-        provider.editEvent(event, widget.event!);
-        Navigator.of(context).pop();
+        Navigator.push(context, MaterialPageRoute(builder: (
+            context) => RefreshScreen(pet:widget.pet, vet: widget.vet, user: widget.user),),);
       }
-      else {
-        pet.addEvent(event);
-        provider.addEvent(event);
+      else
+      {
+        //provider.addEvent(event);
+        pet.addEvents(event);
         Navigator.of(context).pop();
+        Navigator.push(context, MaterialPageRoute(builder: (
+            context) => RefreshScreen(pet:widget.pet, vet: widget.vet, user: widget.user),),);
       }
     }
   }

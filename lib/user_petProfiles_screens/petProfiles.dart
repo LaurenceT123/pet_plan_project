@@ -132,7 +132,7 @@ class MyPetProfiles_screen extends StatelessWidget
                                 if(user.getNumberOfPets() != 0) {
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context) =>
-                                          MyChoosePetProfile(user: user)),);
+                                          MyChoosePetProfile(user: user, vet:vet)),);
                                 }
                                 else
                                   {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
 import '../signin_login_screens/editVetInfo.dart';
-import '../main.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
 

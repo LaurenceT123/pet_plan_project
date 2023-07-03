@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../main.dart';
 import 'package:intl/intl.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
-import '../custom_made_widgets/input_field.dart';
-import 'dailySchedule.dart';
-import 'package:get/get.dart';
 import '../models/Event.dart';
 import '../db/event_provider.dart';
 import '../models/Pet.dart';
@@ -32,6 +26,7 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
   //NEW
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
   late DateTime fromDate;
   late DateTime toDate;
 
@@ -79,6 +74,32 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
             buildTitle(),
             SizedBox(height:12),
             buildDateTimePickers(),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Description', style: TextStyle(fontWeight: FontWeight.bold, fontSize:20),),
+
+                Container(
+                  height: 250,
+                  margin: EdgeInsets.only(top:5.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey.shade700,
+                      width:1.0,
+                    ),
+                  ),
+                  child: TextField(
+                    maxLines:null,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                    controller: descriptionController,
+                  ),
+                ),
+              ],
+            ),
 
           ],
         ),
@@ -258,7 +279,7 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
     {
       final event = Event(
         title: titleController.text,
-        description: 'Description',
+        description: descriptionController.text,
         startTime: fromDate,
         endTime: toDate,
         repeat: false,
@@ -269,10 +290,12 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
 
       if(isEditing)
       {
+        pet.EditEvent(widget.event!,event);
         provider.editEvent(event, widget.event!);
         Navigator.of(context).pop();
       }
       else {
+        pet.addEvent(event);
         provider.addEvent(event);
         Navigator.of(context).pop();
       }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
-import '../main.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -52,7 +51,7 @@ class GetVetInfo extends StatelessWidget
             Expanded(
               flex:10,
               child: Text(
-                'Enter Information',
+                'Enter Vet Information',
                 style: new TextStyle(
                   fontSize: 35.0,
                 ),

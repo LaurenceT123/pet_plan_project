@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
-import 'EditProfilePage.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import '../dailySchedule_screens/dailySchedule.dart';
 import '../db/event_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import '../db/event_provider.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../models/User.dart';
 import '../models/Pet.dart';

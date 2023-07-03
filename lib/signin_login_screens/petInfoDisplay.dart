@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
-import '../signin_login_screens/createPet4_screen.dart';
 
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
-
-import '../custom_made_widgets/input_field.dart';
 
 class PetInfoDisplay extends StatelessWidget
 {

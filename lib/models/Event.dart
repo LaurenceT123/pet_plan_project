@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 class Event
 {
-  final String title;
-  final String description;
-  final DateTime startTime;
-  final DateTime endTime;
-  final bool repeat;
+  String title;
+  String description;
+  DateTime startTime;
+  DateTime endTime;
+  bool repeat;
 
   Event(
       {
@@ -16,4 +14,24 @@ class Event
         required this.endTime,
         this.repeat = false,
       });
+
+  String getTitle()
+  {
+    return title;
+  }
+
+  String getDescription()
+  {
+    return description;
+  }
+
+  DateTime getStartTime()
+  {
+    return startTime;
+  }
+
+  DateTime getEndTime()
+  {
+    return endTime;
+  }
 }

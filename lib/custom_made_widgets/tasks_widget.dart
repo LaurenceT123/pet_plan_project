@@ -6,14 +6,17 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../dailySchedule_screens/event_viewing_screen.dart';
 import '../models/Pet.dart';
+import '../models/User.dart';
 
 class TasksWidget extends StatefulWidget {
 
+  final User user;
   final Pet pet;
 
   const TasksWidget({
     Key? key,
-    required this.pet
+    required this.user,
+    required this.pet,
   }) : super(key:key);
 
   @override
@@ -49,7 +52,7 @@ class _TasksWidgetState extends State<TasksWidget> {
 
           final event = details.appointments!.first;
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => EventViewingPage(event:event, pet:widget.pet),
+            builder: (context) => EventViewingPage(user: widget.user, event:event, pet:widget.pet),
           ));
 
         },

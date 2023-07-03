@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'signin_login_screens/signUp_screen.dart';
-import 'signin_login_screens/createPetProfile_screen.dart';
 import 'package:provider/provider.dart';
 import '../db/event_provider.dart';
 

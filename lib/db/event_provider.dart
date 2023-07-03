@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/Event.dart';
-import '../models/User.dart';
-import '../models/Pet.dart';
 
 class EventProvider extends ChangeNotifier {
 
@@ -33,6 +31,12 @@ class EventProvider extends ChangeNotifier {
   {
     final index = _events.indexOf(oldEvent);
     _events[index] = newEvent;
+    notifyListeners();
+  }
+
+  void deleteEvent(Event oldEvent)
+  {
+    _events.remove(oldEvent);
     notifyListeners();
   }
 }

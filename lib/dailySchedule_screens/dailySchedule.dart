@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import '../main.dart';
 import 'add_task_bar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../db/event_provider.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../custom_made_widgets/tasks_widget.dart';
 import '../dailySchedule_screens/event_viewing_screen.dart';
+import '../user_petProfiles_screens/petProfiles2.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/Event.dart';
@@ -97,6 +96,19 @@ class MyDailySchedule_screen extends StatelessWidget
 
       return Scaffold(
         appBar: AppBar(
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          MyPetProfiles2_screen(user: user, pet:pet)));
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
         ),
 
         body: Center(
@@ -129,7 +141,7 @@ class MyDailySchedule_screen extends StatelessWidget
 
                       showModalBottomSheet(
                         context: context,
-                        builder: (context) => TasksWidget(pet:pet),
+                        builder: (context) => TasksWidget(user:user,pet:pet),
                       );
                     },
                     onTap: (details) {
@@ -137,7 +149,7 @@ class MyDailySchedule_screen extends StatelessWidget
                       final event = details.appointments!.first;
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              EventViewingPage(event: event, pet:pet)));
+                              EventViewingPage(user: user, event: event, pet:pet)));
                     },
                   ),
                 )

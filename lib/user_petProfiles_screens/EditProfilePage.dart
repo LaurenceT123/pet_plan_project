@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../custom_made_widgets/profile_widget.dart';
-import '../main.dart';
 import 'petProfiles.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
 import 'other_screen.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';

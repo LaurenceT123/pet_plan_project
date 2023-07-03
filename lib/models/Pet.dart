@@ -68,9 +68,43 @@ class Pet
     return _schedule;
   }
 
-  void removeEvent(int index)
+  void EditEvent(Event oldEvent, Event newEvent)
   {
-    _schedule.remove(index);
+    int index = findEvent(oldEvent);
+    _schedule[index] = newEvent;
+  }
+
+  int findEvent(Event event)
+  {
+    int index = -1;
+    for(int i = 0; i < _schedule.length; i++)
+      {
+        if(matchEvent(event, _schedule[i]))
+          {
+            index = i;
+          }
+      }
+
+    return index;
+  }
+
+  bool matchEvent(Event event, Event anotherEvent)
+  {
+    bool answer = false;
+    if(event.getTitle() == anotherEvent.getTitle()
+    && event.getDescription() == anotherEvent.getDescription()
+    && event.getStartTime() == anotherEvent.getStartTime()
+    && event.getEndTime() == anotherEvent.getEndTime())
+      {
+        return true;
+      }
+
+    return answer;
+  }
+
+  void removeEvent(Event event)
+  {
+    _schedule.remove(event);
   }
 
 

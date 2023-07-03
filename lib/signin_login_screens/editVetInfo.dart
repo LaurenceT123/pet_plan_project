@@ -3,9 +3,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../custom_made_widgets/input_field.dart';
-import '../user_petProfiles_screens/petProfiles.dart';
 import '../signin_login_screens/showVetInfo.dart';
-import '../main.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
 

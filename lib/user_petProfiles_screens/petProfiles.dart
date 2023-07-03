@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import '../custom_made_widgets/profile_widget.dart';
-import '../main.dart';
 import 'EditProfilePage.dart';
 import '../signin_login_screens/createPetProfile_screen.dart';
-import '../custom_made_widgets/petProfile_widget.dart';
-import 'petProfiles2.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
 import '../user_petProfiles_screens/choosePetProfile.dart';

@@ -17,6 +17,8 @@ class MyCreatePetProfile3 extends StatelessWidget
 
 
   final nameController = TextEditingController();
+  final medicationsController = TextEditingController();
+  final additionalInfoController = TextEditingController();
 
   @override
   Widget build(BuildContext context)
@@ -27,80 +29,97 @@ class MyCreatePetProfile3 extends StatelessWidget
           title: Text("Additional Information"),
         ),
 
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget> [
-            // Name Input
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-
-                    MyInputField(title: 'Name', hint: 'Enter name', controller: nameController),
-
-                    Text("Medications"),
-
-                    SizedBox(
-                      height: 150,
-                      child: TextField(
-                        obscureText: false,
-                        expands: true,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                    ),
-
-                    Text("Additional Info"),
-
-                    SizedBox(
-                      height: 150,
-                      child: TextField(
-                        obscureText: false,
-                        expands: true,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                    ),
-                  ],
+        body: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget> [
+              // Name Input
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0,right:8, top:8),
+                  child: MyInputField(title: 'Name', hint: 'Enter name', controller: nameController),
                 ),
-              ),
 
-              Container(
-                margin: EdgeInsets.only(top:30,bottom: 30),
-                width: 200,
-                child: ElevatedButton(
-                  child: Text('Next'),
-                  onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Medications"),
+                ),
 
-                    if(!nameController.text.isEmpty) {
-
-                      pet.setName(nameController.text);
-
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => MyCreatePetProfile4(
-                              user: user, pet: pet, vet: vet)),);
-                     }
-
-
-                    },
-                  style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                    backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.blue.shade100)
-                        )
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 150,
+                    child: TextField(
+                      obscureText: false,
+                      expands: true,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                      controller: medicationsController,
                     ),
                   ),
                 ),
-              ),
 
-          ]
+                Text("Additional Info"),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 150,
+                    child: TextField(
+                      obscureText: false,
+                      expands: true,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                      controller: additionalInfoController,
+                    ),
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(top:30,bottom: 30),
+                  width: 200,
+                  child: ElevatedButton(
+                    child: Text('Next'),
+                    onPressed: () {
+
+                      if(!nameController.text.isEmpty) {
+
+                        pet.setName(nameController.text);
+
+                        if(!medicationsController.text.isEmpty)
+                          {
+                            pet.setMedications(medicationsController.text);
+                          }
+                        if(!additionalInfoController.text.isEmpty)
+                        {
+                          pet.setAdditionalInfo(additionalInfoController.text);
+                        }
+
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => MyCreatePetProfile4(
+                                user: user, pet: pet, vet: vet)),);
+                       }
+
+
+                      },
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all(Colors.white), //font color
+                      backgroundColor: MaterialStateProperty.all(Colors.blue.shade200), //background color
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.blue.shade100)
+                          )
+                      ),
+                    ),
+                  ),
+                ),
+
+            ]
+          ),
         ),
     );
   }

@@ -71,4 +71,15 @@ class User
   {
     _listOfPets.add(pet);
   }
+
+  void removePet(Pet pet)
+  {
+    _listOfPets.remove(pet);
+  }
+
+  void editPet(Pet oldPet, Pet newPetInfo)
+  {
+    int index = _listOfPets.indexOf(oldPet);
+    _listOfPets[index] = newPetInfo;
+  }
 }

@@ -29,7 +29,6 @@ class MyCreatePetProfileScreen extends StatelessWidget{
                     builder: (context) =>
                         MyPetProfiles_screen(user: user,vet:vet)));
               },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },
         ),

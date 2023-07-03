@@ -745,6 +745,118 @@ class MyCreatePetProfile4 extends StatelessWidget
       }
     }
 
+    //other profiles
+    Widget otherProfiles()
+    {
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: 200,
+            child: Container(
+              color: Colors.blue.shade50,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Other Profile Pictures', style: GoogleFonts.lato(
+                          textStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 25)
+                      )),
+                    ),
+
+
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: PetProfileWidget(
+                              imagePath: 'https://torange.biz/photofxnew/132/IMAGE/frame-circle-horse-beautiful-horses-132516.jpg',
+                              onClicked: () {
+                                pet.setIndex(user.getNumberOfPets());
+                                pet.setImagePath('https://torange.biz/photofxnew/132/IMAGE/frame-circle-horse-beautiful-horses-132516.jpg');
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => PetInfoDisplay(
+                                        user: user, pet: pet, vet:vet)),);
+                              },
+                            ),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: PetProfileWidget(
+                              imagePath: 'https://cdn.arstechnica.net/wp-content/uploads/2021/10/GettyImages-120464542-2-800x533.jpg',
+                              onClicked: () {
+                                pet.setIndex(user.getNumberOfPets());
+                                pet.setImagePath('https://cdn.arstechnica.net/wp-content/uploads/2021/10/GettyImages-120464542-2-800x533.jpg');
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => PetInfoDisplay(
+                                        user: user, pet: pet, vet:vet)),);
+                              },
+                            ),
+                          ),
+
+                          PetProfileWidget(
+                            imagePath: 'https://www.everythingreptiles.com/ezoimgfmt/sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_750,h_469/https://www.everythingreptiles.com/wp-content/uploads/2020/08/Whites-Tree-Frog.jpg?ezimgfmt=rs:372x233/rscb1',
+                            onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
+                              pet.setImagePath('https://www.everythingreptiles.com/ezoimgfmt/sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_750,h_469/https://www.everythingreptiles.com/wp-content/uploads/2020/08/Whites-Tree-Frog.jpg?ezimgfmt=rs:372x233/rscb1');
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => PetInfoDisplay(
+                                      user: user, pet: pet,vet: vet)),);
+                            },
+                          ),
+
+                          SizedBox(width:10),
+                        ]
+                    ),
+
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          PetProfileWidget(
+                            imagePath: 'https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capuchin-monkey-square-1.jpg.optimal.jpg',
+                            onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
+                              pet.setImagePath('https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capuchin-monkey-square-1.jpg.optimal.jpg');
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => PetInfoDisplay(
+                                      user: user, pet: pet, vet:vet)),);
+                            },
+                          ),
+
+                          PetProfileWidget(
+                            imagePath: 'https://img1.10bestmedia.com/Images/Photos/386313/GettyImages-1036724480_55_660x440.jpg',
+                            onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
+                              pet.setImagePath('https://img1.10bestmedia.com/Images/Photos/386313/GettyImages-1036724480_55_660x440.jpg');
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => PetInfoDisplay(
+                                      user: user, pet: pet,vet:vet)),);
+                            },
+                          ),
+
+                          PetProfileWidget(
+                            imagePath: 'https://www.cdc.gov/healthypets/images/pets/hedgehog.jpg?_=88696',
+                            onClicked: () {
+                              pet.setIndex(user.getNumberOfPets());
+                              pet.setImagePath('https://www.cdc.gov/healthypets/images/pets/hedgehog.jpg?_=88696');
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => PetInfoDisplay(
+                                      user: user, pet: pet, vet:vet)),);
+                            },
+                          ),
+                        ]
+                    ),
+
+
+                  ]
+              ),
+            ),
+          ),
+        );
+    }
+
     Widget whichOne()
     {
       if(identical(pet.getAnimal(),'dog'))
@@ -773,7 +885,7 @@ class MyCreatePetProfile4 extends StatelessWidget
         }
       else
       {
-        return SizedBox();
+        return otherProfiles();
       }
 
     }

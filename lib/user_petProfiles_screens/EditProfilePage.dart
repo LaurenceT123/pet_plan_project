@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import 'petProfiles.dart';
 import '../models/User.dart';
@@ -10,6 +11,7 @@ class MyEditProfile_screen extends StatelessWidget {
   final VetInfo vet;
   final nameController = TextEditingController();
   final emailController = TextEditingController();
+  final phoneController = TextEditingController();
 
   MyEditProfile_screen({super.key, required this.user, required this.vet});
 
@@ -20,22 +22,20 @@ class MyEditProfile_screen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Edit Profile'),
       ),
-      body: Column(
-          children: [
+      body: SingleChildScrollView(
+        child: Column(
+            children: [
 
-            Expanded(
-              flex: 50,
-              child: ProfileWidget( //self-built profile widget, code located in profile_widget.dart
+              SizedBox(height: 30),
+
+              ProfileWidget( //self-built profile widget, code located in profile_widget.dart
                 imagePath: 'https://static.hudl.com/users/prod/5499830_8e273ea3a64448478f1bb0af5152a4c7.jpg',
                 isEdit: true,
                 onClicked: () {}, //toDo
               ),
 
-            ),
-
-            Expanded(
-              flex: 50,
-              child: Container(
+              SizedBox(height: 80),
+              Container(
                 width: 350.0,
                 child: Column(
                     children:
@@ -45,7 +45,7 @@ class MyEditProfile_screen extends StatelessWidget {
                         obscureText: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Change name',
+                          labelText: user.getName(),
                         ),
                         controller: nameController,
                       ),
@@ -57,34 +57,28 @@ class MyEditProfile_screen extends StatelessWidget {
                         obscureText: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Change email',
+                          labelText: user.getEmail(),
                         ),
                         controller: emailController,
                       ),
                       SizedBox(height: 5),
 
-                      Container(
-                        margin: EdgeInsets.only(top: 30, bottom: 10),
-                        width: 200,
-                        child: ElevatedButton(
-                          child: Text('Change Phone Number'),
-                          onPressed: () {
-                            /*Navigator.push(context, MaterialPageRoute(builder: (
-                                context) => const MyHomePage(title: 'test')),);*/
-                          },
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all(
-                                Colors.white), //font color
-                            backgroundColor: MaterialStateProperty.all(
-                                Colors.blue.shade200), //background color
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(
-                                        color: Colors.blue.shade100)
-                                )
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Container(
+                          width:380,
+                          child: IntlPhoneField(
+                            decoration: InputDecoration(
+                              labelText: user.getNumber(),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(),
+                              ),
                             ),
+                            onChanged: (phone)
+                            {
+                              phoneController.text = phone.completeNumber;
+                            },
+
                           ),
                         ),
                       ),
@@ -100,6 +94,10 @@ class MyEditProfile_screen extends StatelessWidget {
                             if(!emailController.text.isEmpty) {
                               user.setEmail(emailController.text);
                             }
+                            if(!phoneController.text.isEmpty)
+                              {
+                                user.setNumber(phoneController.text);
+                              }
 
                             Navigator.push(context, MaterialPageRoute(builder: (context) => MyPetProfiles_screen(user: user, vet:vet)),);
                           },
@@ -111,9 +109,9 @@ class MyEditProfile_screen extends StatelessWidget {
                     ]
                 ),
               ),
-            ),
 
-          ]
+            ]
+        ),
       ),
     );
   }

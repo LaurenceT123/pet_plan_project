@@ -23,13 +23,12 @@ class PetInfoDisplay extends StatelessWidget
       appBar: AppBar(
       ),
 
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget> [
+      body: SingleChildScrollView(
+        child: Column(
+            children: <Widget> [
 
-            Expanded(
-              flex: 30,
-              child: Column(
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     PetProfileWidget(
                       imagePath: pet.getImagePath(),
@@ -45,13 +44,63 @@ class PetInfoDisplay extends StatelessWidget
 
                     Text(pet.getAnimal(),
                       style: TextStyle(fontSize: 20, color: Colors.grey)),
+
+                    SizedBox(height:60),
+
+                    Container (
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 300,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: Colors.black,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Text('Medications',
+                                style: TextStyle(fontSize: 20, color: Colors.black)),
+                          ),
+
+                          Text(pet.getMedications(),
+                              style: TextStyle(fontSize: 15)),
+                        ]
+                      ),
+                    ),
+
+
+                    SizedBox(height:60),
+
+                    Container (
+                      child: Column(
+                          children: [
+                            Container(
+                              width: 300,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.black,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                              child: Text('Additional Info',
+                                  style: TextStyle(fontSize: 20, color: Colors.black)),
+                            ),
+
+                            Text(pet.getAdditionalInfo(),
+                                style: TextStyle(fontSize: 15)),
+                          ]
+                      ),
+                    ),
+
+                    SizedBox(height:60),
                   ]
               ),
-            ),
 
-            Expanded(
-              flex: 10,
-              child: Padding(
+              Padding(
                 padding: EdgeInsets.all(60),
                 child: SizedBox(
                   width: 250.0,
@@ -70,10 +119,9 @@ class PetInfoDisplay extends StatelessWidget
                 ),
               ),
 
-            ),
 
-
-          ]
+            ]
+        ),
       ),
     );
   }

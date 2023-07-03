@@ -9,6 +9,7 @@ import '../models/User.dart';
 import '../models/Pet.dart';
 import '../models/VetInfo.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
+import '../user_petProfiles_screens/EditPetProfile.dart';
 
 void main() {
 
@@ -56,7 +57,12 @@ class MyPetProfiles2_screen extends StatelessWidget
                       padding: const EdgeInsets.all(8.0),
                       child: ProfileWidget(
                         imagePath: pet.getImagePath(),
-                        onClicked:(){}, //todo
+                        onClicked:(){
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  EditPetProfile(user: user, vet: vet, pet:pet)));
+
+                        }, //todo
                       ),
                     ),
 
@@ -111,24 +117,6 @@ class MyPetProfiles2_screen extends StatelessWidget
                     child: ElevatedButton(
                       child: Text('Add/Edit/Delete Events'),
                       onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyDailySchedule_screen(user:user,pet:pet, vet:vet)),);},
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all(Colors.white), //font color
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                side: BorderSide(color: Colors.blue.shade100)
-                            )
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Container(
-                    width: 300,
-                    child: ElevatedButton(
-                      child: Text('Vet Information'),
-                      onPressed: () {},
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
                         backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color

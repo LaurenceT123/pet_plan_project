@@ -1,121 +1,148 @@
 import 'package:flutter/material.dart';
-import '../custom_made_widgets/profile_widget.dart';
-import 'petProfiles.dart';
+import '../user_petProfiles_screens/petProfiles.dart';
+import '../user_petProfiles_screens/petProfiles2.dart';
+import '../user_petProfiles_screens/EditPetProfile2.dart';
+import '../custom_made_widgets/petProfile_widget.dart';
+
+import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
 
-class EditPetProfile extends StatelessWidget {
-
+class EditPetProfile extends StatelessWidget
+{
   final User user;
+  final Pet pet;
   final VetInfo vet;
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
 
-  EditPetProfile({super.key, required this.user, required this.vet});
+  EditPetProfile({super.key, required this.user, required this.pet, required this.vet});
+
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
-      ),
-      body: Column(
-          children: [
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          MyPetProfiles2_screen(user: user,vet:vet, pet:pet)));
 
-            Expanded(
-              flex: 50,
-              child: ProfileWidget( //self-built profile widget, code located in profile_widget.dart
-                imagePath: 'https://static.hudl.com/users/prod/5499830_8e273ea3a64448478f1bb0af5152a4c7.jpg',
-                isEdit: true,
-                onClicked: () {}, //toDo
-              ),
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () {
 
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        EditPetProfile2(user: user,vet:vet,pet:pet)));
+
+              },
             ),
 
-            Expanded(
-              flex: 50,
-              child: Container(
-                width: 350.0,
-                child: Column(
-                    children:
-                    [
-                      Text('Name:', textAlign: TextAlign.left),
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Change name',
-                        ),
-                        controller: nameController,
-                      ),
+            IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () {
+                user.removePet(pet);
 
-                      SizedBox(height: 10),
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        MyPetProfiles_screen(user: user,vet:vet)));
 
-                      Text('Email:'),
-                      TextField(
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Change email',
-                        ),
-                        controller: emailController,
-                      ),
-                      SizedBox(height: 5),
-
-                      Container(
-                        margin: EdgeInsets.only(top: 30, bottom: 10),
-                        width: 200,
-                        child: ElevatedButton(
-                          child: Text('Change Phone Number'),
-                          onPressed: () {
-                            /*Navigator.push(context, MaterialPageRoute(builder: (
-                                context) => const MyHomePage(title: 'test')),);*/
-                          },
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all(
-                                Colors.white), //font color
-                            backgroundColor: MaterialStateProperty.all(
-                                Colors.blue.shade200), //background color
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(
-                                        color: Colors.blue.shade100)
-                                )
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      Container(
-                        width: 150.0,
-                        child: OutlinedButton(
-                          onPressed: () {
-
-                            if(!nameController.text.isEmpty) {
-                              user.setName(nameController.text);
-                            }
-                            if(!emailController.text.isEmpty) {
-                              user.setEmail(emailController.text);
-                            }
-
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => MyPetProfiles_screen(user: user, vet:vet)),);
-                          },
-                          child: Text('Save Changes'),
-                        ),
-
-
-                      ),
-                    ]
-                ),
-              ),
+              },
             ),
-
           ]
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+            children: <Widget> [
+
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PetProfileWidget(
+                      imagePath: pet.getImagePath(),
+                      onClicked: () {
+                        /*Navigator.push(context, MaterialPageRoute(builder: (context) => PetInfoDisplay(
+                        user: user, pet: pet)),);*/
+                      },
+                    ),
+
+                    Text(pet.getName(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 35),),
+
+                    Text(pet.getAnimal(),
+                        style: TextStyle(fontSize: 20, color: Colors.grey)),
+
+                    SizedBox(height:60),
+
+                    Container (
+                      child: Column(
+                          children: [
+                            Container(
+                              width: 300,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.black,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                              child: Text('Medications',
+                                  style: TextStyle(fontSize: 20, color: Colors.black)),
+                            ),
+
+                            Text(pet.getMedications(),
+                                style: TextStyle(fontSize: 15)),
+                          ]
+                      ),
+                    ),
+
+
+                    SizedBox(height:60),
+
+                    Container (
+                      child: Column(
+                          children: [
+                            Container(
+                              width: 300,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.black,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                              child: Text('Additional Info',
+                                  style: TextStyle(fontSize: 20, color: Colors.black)),
+                            ),
+
+                            Text(pet.getAdditionalInfo(),
+                                style: TextStyle(fontSize: 15)),
+                          ]
+                      ),
+                    ),
+
+                    SizedBox(height:60),
+                  ]
+              ),
+
+            ]
+        ),
       ),
     );
   }
-
 }

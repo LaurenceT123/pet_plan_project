@@ -28,9 +28,14 @@ class MyChoosePetProfile extends StatelessWidget
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10, bottom:10),
-              child: Text("Select a Pet Profile", textAlign: TextAlign.center,),
+            Container(
+              color: Colors.blue.shade100,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10, bottom:10),
+                child: Text("Select a Pet Profile", textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 35),),
+              ),
             ),
 
             Expanded(

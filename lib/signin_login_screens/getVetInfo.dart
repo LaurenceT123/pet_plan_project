@@ -43,43 +43,41 @@ class GetVetInfo extends StatelessWidget
       appBar: AppBar(
 
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
 
-            Expanded(
-              flex:10,
-              child: Text(
-                'Enter Vet Information',
-                style: new TextStyle(
-                  fontSize: 35.0,
-                ),
+            Text(
+              'Enter Vet Information',
+              style: new TextStyle(
+                fontSize: 35.0,
               ),
             ),
 
-            Expanded(
-              flex:90,
-              child: Container(
-                width: 350.0,
-                child: Column(
-                    children:
-                    [
-                      Container(
-                        width:380,
-                        child: TextField(
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Doctor Name',
-                          ),
-                          controller:nameController,
+            Padding(
+              padding: const EdgeInsets.only(top:8.0, right: 8, left: 8),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:
+                  [
+                    Text('Doctor Name', style: GoogleFonts.lato (textStyle: TextStyle(fontSize:15))),
+
+                    Container(
+                      width:380,
+                      child: TextField(
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
                         ),
+                        controller:nameController,
                       ),
+                    ),
 
-                      SizedBox(height:20),
-
-                      Column(
+                    Padding(
+                      padding: const EdgeInsets.only(bottom:8.0, top:8),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Address', style: GoogleFonts.lato (textStyle: TextStyle(fontSize:15))),
@@ -105,31 +103,33 @@ class GetVetInfo extends StatelessWidget
                           ),
                         ],
                       ),
+                    ),
 
 
-                      Padding(
-                        padding: const EdgeInsets.only(top:20.0),
-                        child: Container(
-                          width:380,
-                          child: IntlPhoneField(
-                            decoration: InputDecoration(
-                              labelText: "Phone Number",
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(),
-                              ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:20.0),
+                      child: Container(
+                        width:380,
+                        child: IntlPhoneField(
+                          decoration: InputDecoration(
+                            labelText: "Phone Number",
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(),
                             ),
-                            onChanged: (phone)
-                            {
-                              phoneController.text = phone.completeNumber;
-                            },
-
                           ),
+                          onChanged: (phone)
+                          {
+                            phoneController.text = phone.completeNumber;
+                          },
+
                         ),
                       ),
+                    ),
 
-                      SizedBox(height:20),
+                    SizedBox(height:20),
 
-                      Container(
+                    Center(
+                      child: Container(
                         width:150.0,
                         child: OutlinedButton(
                           onPressed: goTo, //toDo
@@ -137,8 +137,8 @@ class GetVetInfo extends StatelessWidget
                         ),
 
                       ),
-                    ]
-                ),
+                    ),
+                  ]
               ),
             ),
 

@@ -5,12 +5,16 @@ class Pet
   String imagePath;
   String name;
   String animal;
+  String medications;
+  String additionalInfo;
   int index;
 
   Pet({
     this.imagePath = 'https://ih1.redbubble.net/image.2184627757.3464/st,small,507x507-pad,600x600,f8f8f8.u2.jpg',
     this.name = '',
     this.animal = '',
+    this.medications = 'No Medications',
+    this.additionalInfo = "No Additional Information",
     this.index = 0,
   });
 
@@ -52,6 +56,26 @@ class Pet
   void setIndex(int newIndex)
   {
     index = newIndex;
+  }
+
+  String getMedications()
+  {
+    return medications;
+  }
+
+  void setMedications(String newMeds)
+  {
+    medications = newMeds;
+  }
+
+  String getAdditionalInfo()
+  {
+    return additionalInfo;
+  }
+
+  void setAdditionalInfo(String newInfo)
+  {
+    additionalInfo = newInfo;
   }
 
 

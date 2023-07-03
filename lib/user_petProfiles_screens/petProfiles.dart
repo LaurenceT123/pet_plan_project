@@ -57,13 +57,33 @@ class MyPetProfiles_screen extends StatelessWidget
 
 
             Expanded(
-              flex:20,
+              flex:30,
               child: Center(
                 child: Column(
                   children: [
 
+                    Container(
+                        child: Column(
+                          children: [
+                            Text(user.getNumberOfPets().toString(), style: TextStyle(fontSize: 35, color: Colors.grey)),
 
-                    Text(user.getNumberOfPets().toString(), style: TextStyle(fontSize: 30, color: Colors.grey)),
+                            Container(
+                              width: 200,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    top: BorderSide(
+                                      color: Colors.grey.shade700,
+                                      width: 3.0,
+                                    ),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom:20.0),
+                                  child: Text('Number of Pet Profiles', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey.shade700, fontSize: 27)),
+                                ))
+
+                          ],
+                        )),
 
                     Padding(
                       padding: const EdgeInsets.only(right:10),

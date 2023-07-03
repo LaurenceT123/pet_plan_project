@@ -36,7 +36,7 @@ class RefreshScreen extends StatelessWidget
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
 
-              Text('Updating Changes....'),
+              Text('Updating Changes....', style: TextStyle(fontSize: 25),),
 
               Container(
                 width: 300,

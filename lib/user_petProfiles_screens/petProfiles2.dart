@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../custom_made_widgets/petProfile_widget.dart';
+import '../custom_made_widgets/profile_widget.dart';
 import '../dailySchedule_screens/dailySchedule.dart';
 import '../db/event_provider.dart';
 import 'package:provider/provider.dart';
@@ -54,13 +54,14 @@ class MyPetProfiles2_screen extends StatelessWidget
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: PetProfileWidget(
+                      child: ProfileWidget(
                         imagePath: pet.getImagePath(),
-                        onClicked:(){},
+                        onClicked:(){}, //todo
                       ),
                     ),
 
-                    Text(pet.getName()),
+                    Text(pet.getName(), style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 25),),
                   ]
               ),
             ),

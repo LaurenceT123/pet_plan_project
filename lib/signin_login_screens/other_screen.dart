@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../models/User.dart';
+import '../models/Pet.dart';
+import '../models/VetInfo.dart';
+import '../signin_login_screens/createPet4_screen.dart';
+import '../signin_login_screens/createPet2_screen.dart';
 
-void main() => runApp(MyOther_screen(title: 'test'));
-
-class MyOther_screen extends StatefulWidget
+class MyOther_screen extends StatelessWidget
 {
-  const MyOther_screen({super.key, required this.title});
-  final String title;
+  final User user;
+  final Pet pet;
+  final VetInfo vet;
 
-  @override
-  State<MyOther_screen> createState() => _OtherState();
-}
+  final animalController = TextEditingController();
 
-class _OtherState extends State<MyOther_screen> {
+  MyOther_screen({super.key, required this.user, required this.pet, required this.vet});
 
   @override
   Widget build(BuildContext context)
@@ -31,61 +33,48 @@ class _OtherState extends State<MyOther_screen> {
     );
 
     return Scaffold(
-        body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                expandedHeight: 150.0,
-                stretch: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  stretchModes: const <StretchMode>[
-                    StretchMode.zoomBackground,
-                    StretchMode.blurBackground,
-                    StretchMode.fadeTitle,
-                  ],
-                  //centerTitle:true,
-                  background: Image.network('https://t3.ftcdn.net/jpg/01/19/67/02/360_F_119670247_HDccziQUuo2kFpaNiM22dIto5I8GPAWW.jpg', fit: BoxFit.cover),
-                ),
-              ),
-            ];
+      appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.keyboard_arrow_left),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        MyCreatePetProfile2(user: user, pet:pet,vet: vet)));
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
           },
-
+        ),
+      ),
 
           body:Center(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+            child: SingleChildScrollView(
+              padding: EdgeInsets.all(12),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
 
-                  Expanded(
-                    flex: 30,
-                    child: Column( children: <Widget> [
-
-                      Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Text('Sorry, it seems we don\'t have the animal of your choice listed',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize:20,
-                          ),
-                        ),
-
+                    Text('Sorry, it seems we don\'t have the animal of your choice listed',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize:20,
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(20),
-                        child:Text('Please enter what animal you are planning for',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize:20,
-                          ),
-                        ),
-                      ),
-
-                    ]
                     ),
-                  ),
-                  Expanded(
-                    flex:40,
-                    child: Container(
+
+                    SizedBox(height: 20),
+
+                    Text('Please enter what animal you are planning for',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize:20,
+                      ),
+                    ),
+
+                    SizedBox(height: 20),
+
+                    Container(
                       width: 350.0,
                       child: Column(
                           children:
@@ -95,17 +84,39 @@ class _OtherState extends State<MyOther_screen> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                               ),
+                              controller: animalController,
                             ),
 
                           ]
                       ),
                     ),
-                  ),
 
-                ]
+                    SizedBox(height: 20),
+
+                    SizedBox(
+                      width:250.0,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          if (!animalController.text.isEmpty) {
+
+                            pet.setAnimal(animalController.text);
+
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) =>
+                                    MyCreatePetProfile4(
+                                        user: user, pet: pet, vet: vet)),);
+                          }
+                        },
+                        child: Text('Next'),
+                      ),
+                    ),
+
+
+
+                  ]
+              ),
             ),
           ),
-        )
     );
   }
 }

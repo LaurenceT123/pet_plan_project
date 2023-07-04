@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../custom_made_widgets/profile_widget.dart';
+import '../custom_made_widgets/petProfile_widget.dart';
 import 'petProfiles.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
@@ -28,9 +29,8 @@ class MyEditProfile_screen extends StatelessWidget {
 
               SizedBox(height: 30),
 
-              ProfileWidget( //self-built profile widget, code located in profile_widget.dart
+              PetProfileWidget( //self-built profile widget
                 imagePath: 'https://static.hudl.com/users/prod/5499830_8e273ea3a64448478f1bb0af5152a4c7.jpg',
-                isEdit: true,
                 onClicked: () {}, //toDo
               ),
 

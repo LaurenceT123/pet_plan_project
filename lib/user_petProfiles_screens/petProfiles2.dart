@@ -10,6 +10,7 @@ import '../models/Pet.dart';
 import '../models/VetInfo.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
 import '../user_petProfiles_screens/EditPetProfile.dart';
+import '../user_petProfiles_screens/sharePetProfile.dart';
 
 void main() {
 
@@ -135,7 +136,10 @@ class MyPetProfiles2_screen extends StatelessWidget
                     width: 300,
                     child: ElevatedButton(
                       child: Text('Share Pet Profile'),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SharePetProfile(user:user,pet:pet, vet:vet)),);
+
+                      },
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all(Colors.white), //font color
                         backgroundColor: MaterialStateProperty.all(Colors.blue.shade300), //background color

@@ -911,7 +911,7 @@ class MyCreatePetProfile4 extends StatelessWidget
               child:  Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: PetProfileWidget(
-                  imagePath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Photo-camera-in-circular-outlined-interface-button.svg/2048px-Photo-camera-in-circular-outlined-interface-button.svg.png',
+                  imagePath: 'https://www.creativefabrica.com/wp-content/uploads/2021/08/07/Image-Gallery-Icon-Graphics-15590538-1-580x386.jpg',
                   onClicked: () async {
                     try {
                       final image = await ImagePicker().pickImage(

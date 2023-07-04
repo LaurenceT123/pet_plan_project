@@ -1,16 +1,10 @@
-# pet_plan
+# Pet Plan
 
-A new Flutter project.
+The Problem: Depending on the breed or pet you have, some animals require care that follows a specific
+schedule. 
 
-## Getting Started
+Solution: Just like apps that serve as planners for our everyday tasks, I want to create an app that
+lets a user plan out their pet’s care schedule. Essentially let the user create their own pet care
+planner.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Demo: https://www.youtube.com/watch?v=0R1QQ88-eWI

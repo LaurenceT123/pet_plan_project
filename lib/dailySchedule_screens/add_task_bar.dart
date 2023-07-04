@@ -99,6 +99,7 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
                     obscureText: false,
                     decoration: InputDecoration(
                       border: InputBorder.none,
+                      hintText: (widget.event != null) ? widget.event!.getDescription() : 'Description',
                     ),
                     controller: descriptionController,
                   ),

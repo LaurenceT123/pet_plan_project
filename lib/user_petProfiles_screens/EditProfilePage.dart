@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../custom_made_widgets/profile_widget.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import 'petProfiles.dart';
 import '../models/User.dart';

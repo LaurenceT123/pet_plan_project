@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../custom_made_widgets/profile_widget.dart';
-import 'EditProfilePage.dart';
 import '../signin_login_screens/createPetProfile_screen.dart';
+import '../signin_login_screens/showVetInfo.dart';
+import '../user_petProfiles_screens/choosePetProfile.dart';
+import 'EditProfilePage.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
-import '../user_petProfiles_screens/choosePetProfile.dart';
-import '../signin_login_screens/showVetInfo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

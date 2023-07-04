@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'package:intl/intl.dart';
-import 'add_task_bar.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
-import '../db/event_provider.dart';
-import '../dailySchedule_screens/event_data_source.dart';
-import '../custom_made_widgets/tasks_widget.dart';
-import '../dailySchedule_screens/event_viewing_screen.dart';
-import '../user_petProfiles_screens/petProfiles2.dart';
+import '../dailySchedule_screens/dailySchedule.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';
-import '../models/Event.dart';
 import '../models/VetInfo.dart';
-import '../dailySchedule_screens/dailySchedule.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

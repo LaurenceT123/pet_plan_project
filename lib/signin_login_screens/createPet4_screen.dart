@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
+import '../signin_login_screens/petInfoDisplay.dart';
+import 'dart:io';
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../signin_login_screens/petInfoDisplay.dart';
-import 'dart:io';
 
 class MyCreatePetProfile4 extends StatelessWidget
 {

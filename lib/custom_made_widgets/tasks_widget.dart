@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../db/event_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
+import '../db/event_provider.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../dailySchedule_screens/event_viewing_screen.dart';
 import '../models/Pet.dart';

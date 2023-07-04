@@ -3,7 +3,6 @@ import '../user_petProfiles_screens/petProfiles.dart';
 import '../user_petProfiles_screens/petProfiles2.dart';
 import '../user_petProfiles_screens/EditPetProfile2.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
-
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';

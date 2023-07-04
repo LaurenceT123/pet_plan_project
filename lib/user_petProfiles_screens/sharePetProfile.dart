@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../user_petProfiles_screens/petProfiles.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
-
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/User.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../signin_login_screens/getVetInfo.dart';
+import '../models/User.dart';
 
 class MySignUpScreen extends StatefulWidget
 {

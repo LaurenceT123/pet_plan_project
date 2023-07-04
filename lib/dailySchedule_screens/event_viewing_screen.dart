@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/User.dart';
-import '../models/Event.dart';
-import '../models/Pet.dart';
-import '../models/VetInfo.dart';
 import 'package:intl/intl.dart';
 import '../dailySchedule_screens/add_task_bar.dart';
 import '../db/event_provider.dart';
 import '../dailySchedule_screens/dailySchedule.dart';
+import '../models/User.dart';
+import '../models/Event.dart';
+import '../models/Pet.dart';
+import '../models/VetInfo.dart';
 
 class EventViewingPage extends StatelessWidget {
   final User user;

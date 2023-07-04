@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'createPet2_screen.dart';
 import 'createPet3_screen.dart';
+import '../user_petProfiles_screens/petProfiles.dart';
 import '../models/User.dart';
 import '../models/Pet.dart';
 import '../models/VetInfo.dart';
-import '../user_petProfiles_screens/petProfiles.dart';
 
 class MyCreatePetProfileScreen extends StatelessWidget{
 

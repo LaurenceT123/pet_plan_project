@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
+import '../signin_login_screens/createPet3_screen.dart';
+import '../signin_login_screens/createPet2_screen.dart';
 import '../models/User.dart';
 import '../models/Pet.dart';
 import '../models/VetInfo.dart';
-import '../signin_login_screens/createPet3_screen.dart';
-import '../signin_login_screens/createPet2_screen.dart';
 
 class MyOther_screen extends StatelessWidget
 {

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../custom_made_widgets/profile_widget.dart';
 import '../dailySchedule_screens/dailySchedule.dart';
 import '../db/event_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../dailySchedule_screens/event_data_source.dart';
-import '../models/User.dart';
-import '../models/Pet.dart';
-import '../models/VetInfo.dart';
 import '../user_petProfiles_screens/petProfiles.dart';
 import '../user_petProfiles_screens/EditPetProfile.dart';
 import '../user_petProfiles_screens/sharePetProfile.dart';
+import '../models/User.dart';
+import '../models/Pet.dart';
+import '../models/VetInfo.dart';
 
 void main() {
 

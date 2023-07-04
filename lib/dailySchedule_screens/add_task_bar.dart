@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import '../dailySchedule_screens/refresh_screen.dart';
 import '../models/Event.dart';
-import '../db/event_provider.dart';
 import '../models/Pet.dart';
 import '../models/VetInfo.dart';
 import '../models/User.dart';
-import '../dailySchedule_screens/dailySchedule.dart';
-import '../dailySchedule_screens/refresh_screen.dart';
 
 
 class AddTaskPage_screen extends StatefulWidget
@@ -294,7 +291,6 @@ class _AddTaskPage_screenState extends State<AddTaskPage_screen> {
       );
 
       final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider> (context, listen:false);
 
       if(isEditing)
       {

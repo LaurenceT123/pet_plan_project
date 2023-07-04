@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:intl/intl.dart';
-import 'add_task_bar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'add_task_bar.dart';
 import '../db/event_provider.dart';
 import '../dailySchedule_screens/event_data_source.dart';
 import '../custom_made_widgets/tasks_widget.dart';
@@ -24,7 +24,6 @@ class MyDailySchedule_screen extends StatelessWidget
   final VetInfo vet;
   final Pet pet;
   MyDailySchedule_screen({super.key, required this.user, required this.pet, required this.vet});
-
   DateTime _selectedDate = DateTime.now();
 
   @override

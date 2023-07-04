@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 class ProfileWidget extends StatelessWidget {
   final String imagePath;
   final bool isEdit;
   final VoidCallback onClicked;
+  File? file;
 
-  const ProfileWidget({
+  ProfileWidget({
     Key? key,
     required this.imagePath,
     this.isEdit = false,
     required this.onClicked,
+    this.file,
   }) : super(key: key);
 
   Widget build(BuildContext context)
@@ -34,7 +37,14 @@ class ProfileWidget extends StatelessWidget {
 
     return ClipOval(
       child: Material(
-          child:Ink.image(
+          child:
+          file != null?
+          
+          GestureDetector(
+            child:Image.file(file!, width:110, height:110, fit: BoxFit.cover),
+            onTap: onClicked,
+          ):
+          Ink.image(
             image: image,
             fit: BoxFit.cover,
             width: 120,

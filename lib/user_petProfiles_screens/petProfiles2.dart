@@ -57,6 +57,7 @@ class MyPetProfiles2_screen extends StatelessWidget
                       padding: const EdgeInsets.all(8.0),
                       child: ProfileWidget(
                         imagePath: pet.getImagePath(),
+                        file: pet.getFile(),
                         onClicked:(){
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>

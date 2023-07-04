@@ -39,6 +39,7 @@ class EditPetProfile2 extends StatelessWidget
 
               PetProfileWidget(
                 imagePath: pet.getImagePath(),
+                file: pet.getFile(),
                 onClicked: () {
                   /*Navigator.push(context, MaterialPageRoute(builder: (context) => PetInfoDisplay(
                         user: user, pet: pet)),);*/

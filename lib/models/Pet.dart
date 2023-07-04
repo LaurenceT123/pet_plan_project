@@ -1,4 +1,5 @@
 import '../models/Event.dart';
+import 'dart:io';
 
 class Pet
 {
@@ -8,6 +9,7 @@ class Pet
   String medications;
   String additionalInfo;
   int index;
+  File? file;
 
   Pet({
     this.imagePath = 'https://ih1.redbubble.net/image.2184627757.3464/st,small,507x507-pad,600x600,f8f8f8.u2.jpg',
@@ -16,7 +18,18 @@ class Pet
     this.medications = 'No Medications',
     this.additionalInfo = "No Additional Information",
     this.index = 0,
+    this.file,
   });
+
+  void setFile(File newFile)
+  {
+    file = newFile;
+  }
+
+  File? getFile()
+  {
+    return file;
+  }
 
   String getImagePath()
   {

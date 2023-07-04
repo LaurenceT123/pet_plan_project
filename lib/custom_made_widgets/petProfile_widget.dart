@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 class PetProfileWidget extends StatelessWidget {
   final String imagePath;
   final bool isEdit;
   bool isSelected;
+  File? file;
   final VoidCallback onClicked;
 
   PetProfileWidget({
@@ -11,6 +13,7 @@ class PetProfileWidget extends StatelessWidget {
     required this.imagePath,
     this.isEdit = false,
     this.isSelected = false,
+    this.file,
     required this.onClicked,
   }) : super(key: key);
 
@@ -37,7 +40,15 @@ class PetProfileWidget extends StatelessWidget {
     return ClipOval(
       child: Container(
         child: Material(
-          child:Ink.image(
+          child:
+          file != null?
+
+          GestureDetector(
+              child:Image.file(file!, width:110, height:110, fit: BoxFit.cover),
+            onTap: onClicked,
+          ):
+
+          Ink.image(
             image: image,
             fit: BoxFit.cover,
             width: 110,

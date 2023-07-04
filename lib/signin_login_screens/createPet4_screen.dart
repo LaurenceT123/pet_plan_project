@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '../custom_made_widgets/petProfile_widget.dart';
 import '../models/Pet.dart';
 import '../models/User.dart';
 import '../models/VetInfo.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../signin_login_screens/petInfoDisplay.dart';
+import 'dart:io';
 
 class MyCreatePetProfile4 extends StatelessWidget
 {
   final User user;
   final Pet pet;
   final VetInfo vet;
+  File? image;
 
-  const MyCreatePetProfile4({super.key, required this.user, required this.pet, required this.vet});
+  MyCreatePetProfile4({super.key, required this.user, required this.pet, required this.vet});
 
   @override
   Widget build(BuildContext context)
@@ -909,7 +912,27 @@ class MyCreatePetProfile4 extends StatelessWidget
                 padding: const EdgeInsets.all(20.0),
                 child: PetProfileWidget(
                   imagePath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Photo-camera-in-circular-outlined-interface-button.svg/2048px-Photo-camera-in-circular-outlined-interface-button.svg.png',
-                  onClicked: () {},
+                  onClicked: () async {
+                    try {
+                      final image = await ImagePicker().pickImage(
+                          source: ImageSource.gallery);
+                      if (image == null) return;
+
+                      final imageTemporary = File(image.path);
+                      this.image = imageTemporary;
+                    } catch(e)
+                    {
+                      print('Failed to pick image: $e');
+                    }
+                      print('Went through!');
+                    if(!(image == null))
+                    {
+                      pet.setFile(image!);
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) =>
+                              PetInfoDisplay(user: user, pet: pet, vet: vet)),);
+                    }
+                  },
                 ),
               ),
             ),
